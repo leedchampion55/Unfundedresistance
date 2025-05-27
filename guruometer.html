@@ -1,30 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Guruometer</title>
+  <title>Guruometer</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background: #000;
+      color: #f5f5f5;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+
+    .guru-intro {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .guru-intro h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .guru-intro h2 {
+      font-size: 1.5em;
+      margin: 2em 0 1em;
+    }
+
+    .guru-intro ul {
+      line-height: 1.8;
+      display: inline-block;
+      text-align: left;
+      margin-bottom: 2em;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 2em 0;
+      justify-content: center;
+    }
+
+    select, input[type="text"] {
+      padding: 6px;
+      font-size: 1em;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .candles {
+      display: flex;
+      gap: 4px;
+      margin: 10px 0;
+    }
+
+    .candle {
+      width: 16px;
+      height: 28px;
+      border: 2px solid #333;
+      background: #000;
+      transition: background 0.3s, opacity 0.3s;
+    }
+
+    .candle.green { background: #0f0; }
+    .candle.red { background: #f00; }
+    .candle.partial { animation: none; }
+
+    .guru-card {
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+    }
+
+    .toggle-btn {
+      margin-top: 10px;
+      background: none;
+      border: 1px solid #444;
+      padding: 6px 12px;
+      color: #f4b400;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    #topLists {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="built-to-survive.html">Built to Survive</a></li>
-      <li><a href="verified-journal.html">Verified Journal</a></li>
-      <li><a href="guruometer.html">Guruometer</a></li>
-      <li><a href="prove-it.html">Prove It</a></li>
-      <li><a href="join.html">Join</a></li>
-    </ul>
-  </nav>
 
-  <h1>The Guruometer</h1>
-  <p>This is where we expose trading influencers and rate them based on proof, transparency, and BS level.</p>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="built-to-survive.html">Built to Survive</a></li>
+    <li><a href="verified-journal.html">Verified Journal</a></li>
+    <li><a href="guruometer.html">Guruometer</a></li>
+    <li><a href="prove-it.html">Prove It</a></li>
+    <li><a href="join.html">Join</a></li>
+  </ul>
+</nav>
 
-  <p><em>Real reviews. No filters. Community-powered.</em></p>
-	  <footer>
-    <hr style="margin: 2em auto; border-color: #444;">
-    <p>&copy; 2025 Unfunded Resistance. Built from scratch. No fluff. No filters.</p>
-  </footer>
+<section class="guru-intro">
+  <h1>Guruometer</h1>
+  <p>Tired of fake mentors and “10X” hype?<br><strong>So are we.</strong></p>
+  <p>
+    The Guruometer is our public database of a few real deals but mostly clowns, frauds, and overhyped “mentors” who are polluting the trading space with lies, screenshots, and Lamborghini delusions.
+  </p>
+  <p style="font-weight: bold;">
+    We don’t just call them out, we rate them.
+  </p>
+  <h2>Here’s how it works…</h2>
+  <ul>
+    <li><strong>Lambo Level</strong> – How hard are they flexing lifestyle over results?</li>
+    <li><strong>Proof of Trading</strong> – Do they show real, verified trades or just cherry-picked wins?</li>
+    <li><strong>Course Clownery</strong> – Are they selling overpriced mentorships, bootcamps, or “signals”?</li>
+    <li><strong>Community Cult Score</strong> – Do they create dependency or actual skill?</li>
+    <li><strong>Transparency Factor</strong> – Is anything they say verifiable?</li>
+  </ul>
+  <p>
+    Each one gets a brutal, no-BS rating from the Resistance.<br>
+    <strong>We don’t care about feelings. We care about truth.</strong>
+  </p>
+</section>
+
+<div class="controls">
+  <select id="sort">
+    <option value="desc">Sort: High to Low</option>
+    <option value="asc">Sort: Low to High</option>
+  </select>
+
+  <select id="bsFilter">
+    <option value="">Filter: Any BS</option>
+    <option value="1">BS Meter ≥ 1</option>
+    <option value="2">BS Meter ≥ 2</option>
+    <option value="3">BS Meter ≥ 3</option>
+    <option value="4">BS Meter ≥ 4</option>
+    <option value="5">BS Meter = 5</option>
+  </select>
+
+  <select id="ratingFilter">
+    <option value="">Filter: Any Rating</option>
+    <option value="4.5">Rating ≥ 4.5</option>
+    <option value="4.0">Rating ≥ 4.0</option>
+    <option value="3.5">Rating ≥ 3.5</option>
+    <option value="3.0">Rating ≥ 3.0</option>
+    <option value="2.5">Rating ≥ 2.5</option>
+  </select>
+
+  <input type="text" id="searchInput" placeholder="Search by name" />
+</div>
+
+<div id="topLists">
+  <div style="flex: 1; min-width: 240px;">
+    <h2>Top 5 Highest Rated</h2>
+    <div id="topRatedList"></div>
+  </div>
+  <div style="flex: 1; min-width: 240px;">
+    <h2>Top 5 Lowest Rated</h2>
+    <div id="worstRatedList"></div>
+  </div>
+</div>
+
+<div id="guruContainer">Loading guru cards...</div>
+
+<script>
+function updateTopLists() {
+  const cards = Array.from(document.querySelectorAll(".guru-card"));
+  const sorted = [...cards].sort((a, b) => parseFloat(b.dataset.score) - parseFloat(a.dataset.score));
+
+  const top5 = sorted.slice(0, 5);
+  const bottom5 = sorted.slice(-5).reverse();
+
+  const topRatedList = document.getElementById("topRatedList");
+  const worstRatedList = document.getElementById("worstRatedList");
+
+  topRatedList.innerHTML = "";
+  worstRatedList.innerHTML = "";
+
+  function createListItem(card) {
+    const name = card.querySelector(".guru-name")?.textContent || "Unknown";
+    const score = parseFloat(card.dataset.score).toFixed(1);
+
+    const container = document.createElement("div");
+    container.style.display = "flex";
+    container.style.alignItems = "center";
+    container.style.marginBottom = "10px";
+    container.style.gap = "10px";
+
+    const scoreText = document.createElement("div");
+    scoreText.textContent = score;
+    scoreText.style.fontWeight = "bold";
+    scoreText.style.minWidth = "30px";
+
+    const nameText = document.createElement("div");
+    nameText.textContent = name;
+    nameText.style.flex = "1";
+    nameText.style.fontSize = "0.9em";
+
+    const candles = document.createElement("div");
+    candles.classList.add("candles");
+    candles.setAttribute("data-score", score);
+
+    container.appendChild(scoreText);
+    container.appendChild(candles);
+    container.appendChild(nameText);
+
+    return container;
+  }
+
+  top5.forEach(card => {
+    const item = createListItem(card);
+    topRatedList.appendChild(item);
+    createCandles(parseFloat(card.dataset.score), item.querySelector(".candles"));
+  });
+
+  bottom5.forEach(card => {
+    const item = createListItem(card);
+    worstRatedList.appendChild(item);
+    createCandles(parseFloat(card.dataset.score), item.querySelector(".candles"));
+  });
+}
+
+function createCandles(score, container) {
+  const full = Math.floor(score);
+  const partial = score - full;
+  const isBS = container.parentElement?.textContent?.toLowerCase().includes("bs meter");
+  const color = isBS
+    ? (score <= 2.4 ? "green" : "red")
+    : (score >= 2.6 ? "green" : "red");
+
+  for (let i = 0; i < 5; i++) {
+    const c = document.createElement("div");
+    c.classList.add("candle");
+    if (i < full) {
+      c.classList.add(color);
+    } else if (i === full && partial > 0) {
+      c.classList.add(color, "partial");
+      c.style.opacity = partial.toFixed(2);
+    }
+    container.appendChild(c);
+  }
+}
+
+function sortCards() {
+  const order = document.getElementById("sort").value;
+  const cards = Array.from(document.querySelectorAll(".guru-card"));
+  cards.sort((a, b) => {
+    return order === "asc"
+      ? parseFloat(a.dataset.score) - parseFloat(b.dataset.score)
+      : parseFloat(b.dataset.score) - parseFloat(a.dataset.score);
+  });
+  cards.forEach(card => document.getElementById("guruContainer").appendChild(card));
+}
+
+function filterCards() {
+  const minBS = parseInt(document.getElementById("bsFilter").value);
+  const minRating = parseFloat(document.getElementById("ratingFilter").value);
+  const query = document.getElementById("searchInput").value.toLowerCase();
+
+  document.querySelectorAll(".guru-card").forEach(card => {
+    const name = card.dataset.name || "";
+    const bs = parseFloat(card.dataset.bs) || 0;
+    const score = parseFloat(card.dataset.score) || 0;
+
+    const matchBS = !minBS || bs >= minBS;
+    const matchRating = !minRating || score >= minRating;
+    const matchQuery = name.includes(query);
+
+    const isVisible = matchBS && matchRating && matchQuery;
+    card.style.display = isVisible ? "block" : "none";
+  });
+}
+
+function toggleReview(btn) {
+  const full = btn.previousElementSibling;
+  const isOpen = full.style.display === "block";
+  full.style.display = isOpen ? "none" : "block";
+  btn.textContent = isOpen ? "Read More" : "Show Less";
+}
+
+function initGuruometer() {
+  document.querySelectorAll(".candlestick-rating").forEach(el => {
+    const score = parseFloat(el.dataset.score);
+    createCandles(score, el);
+  });
+
+  document.querySelectorAll(".candles").forEach(el => {
+    const score = parseFloat(el.dataset.score);
+    createCandles(score, el);
+  });
+
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.onclick = () => toggleReview(btn);
+  });
+
+  sortCards();
+  filterCards();
+  updateTopLists();
+}
+
+// Load Guru cards
+fetch("https://leedchampion55.github.io/UFR/Gurus.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("guruContainer").innerHTML = data;
+    initGuruometer();
+  });
+
+// Event Listeners
+document.getElementById("sort").addEventListener("change", sortCards);
+document.getElementById("bsFilter").addEventListener("change", filterCards);
+document.getElementById("ratingFilter").addEventListener("change", filterCards);
+document.getElementById("searchInput").addEventListener("input", filterCards);
+</script>
+
 </body>
 </html>
