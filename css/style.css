@@ -31,10 +31,4 @@ footer {
   color: #888;
   text-align: center;
 }
-.container img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  display: block;
-  margin: 0 auto 2em auto;
-}
+
