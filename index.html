@@ -1,374 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Guruometer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unfunded Resistance</title>
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      background: #000;
-      color: #fff;
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2em;
       font-family: 'Courier New', monospace;
-      padding: 20px;
+      color: #eee;
+      text-align: center;
     }
 
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    select, input[type="text"] {
-      padding: 6px;
-      font-size: 1em;
-      border-radius: 4px;
-      border: none;
-    }
-
-    .candles {
-      display: flex;
-      gap: 4px;
-      margin: 10px 0;
-    }
-
-    .candle {
-      width: 16px;
-      height: 28px;
-      border: 2px solid #333;
-      background: #000;
-      transition: background 0.3s, opacity 0.3s;
-    }
-
-    .candle.green {
-      background: #0f0;
-    }
-
-    .candle.red {
-      background: #f00;
-    }
-
-    .candle.partial {
-      animation: none;
-    }
-
-    #topLists {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    @media (max-width: 768px) {
-      #topLists {
-        flex-direction: column;
-      }
-    }
-
-    .guru-card {
-      background: #1a1a1a;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 500px;
-    }
-
-    .guru-header.vertical .guru-name {
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-bottom: 8px;
-      word-break: break-word;
+    .container img {
       width: 100%;
+      max-width: 700px;
+      margin-bottom: 2em;
+    }
+
+    .container ul {
+      list-style-position: inside;
       text-align: left;
+      display: inline-block;
     }
 
-    .guru-header.vertical .top-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+    .container h1, .container h2, .container h3 {
+      text-transform: uppercase;
+      margin-top: 2em;
     }
 
-    .guru-photo img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #444;
-    }
-
-    .guru-info {
-      flex-grow: 1;
-    }
-
-    .guru-tagline {
-      font-size: 0.95em;
-      color: #aaa;
-    }
-
-    .ratings {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .rating-item {
-      background: #2a2a2a;
-      border-radius: 6px;
-      padding: 10px;
-      font-size: 0.95em;
-    }
-
-    .candlestick-rating {
-      display: flex;
-      gap: 4px;
-      margin-top: 4px;
-    }
-
-    .verdict {
-      margin-top: 20px;
-      font-size: 0.95em;
-    }
-
-    .full-verdict {
-      display: none;
-      margin-top: 10px;
-    }
-
-    .toggle-btn {
-      margin-top: 10px;
-      background: none;
-      border: 1px solid #444;
-      padding: 6px 12px;
-      color: #f4b400;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    .overall-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .overall-score {
-      font-size: 1.5em;
+    .instagram-link {
+      display: inline-block;
+      margin-top: 2em;
+      padding: 0.75em 1.5em;
+      background-color: #fff;
+      color: #000;
       font-weight: bold;
-      color: #fff;
-      white-space: nowrap;
+      text-decoration: none;
+      border: none;
+      font-family: 'Courier New', monospace;
+    }
+
+    .instagram-link:hover {
+      background-color: #ccc;
     }
   </style>
 </head>
 <body>
-
-<section id="guruometer" style="margin-bottom: 40px;">
-  <div style="max-width: 900px; margin: auto; text-align: center;">
-    <h1 style="font-size: 42px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">Guruometer</h1>
-    <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
-      Tired of fake mentors and “10X” hype?<br><strong>So are we.</strong>
-    </p>
-    <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
-      The Guruometer is our public database of a few real deals but mostly clowns, frauds, and overhyped “mentors” who are polluting the trading space with lies, screenshots, and Lamborghini delusions.
-    </p>
-    <p style="font-size: 18px; line-height: 1.6; font-weight: bold; margin-bottom: 40px;">
-      We don’t just call them out, we rate them.
-    </p>
-    <h2 style="font-size: 28px; margin-bottom: 20px;">Here’s how it works…</h2>
-    <ul style="line-height: 1.8; display: inline-block; text-align: left; margin: 0 auto 40px auto;">
-      <li><strong>Lambo Level</strong> – How hard are they flexing lifestyle over results?</li>
-      <li><strong>Proof of Trading</strong> – Do they show real, verified trades or just cherry-picked wins?</li>
-      <li><strong>Course Clownery</strong> – Are they selling overpriced mentorships, bootcamps, or “signals”?</li>
-      <li><strong>Community Cult Score</strong> – Do they create dependency or actual skill?</li>
-      <li><strong>Transparency Factor</strong> – Is anything they say verifiable?</li>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="built-to-survive.html">Built to Survive</a></li>
+      <li><a href="verified-journal.html">Verified Journal</a></li>
+      <li><a href="guruometer.html">Guruometer</a></li>
+      <li><a href="prove-it.html">Prove It</a></li>
+      <li><a href="join.html">Join</a></li>
     </ul>
-    <p style="font-size: 18px; line-height: 1.6;">
-      Each one gets a brutal, no-BS rating from the Resistance.<br>
-      <strong>We don’t care about feelings. We care about truth.</strong>
-    </p>
+  </nav>
+
+  <div class="container">
+    <!-- Replace this URL with your image -->
+    <img src="https://via.placeholder.com/700x300?text=Unfunded+Resistance+Header" alt="Unfunded Resistance">
+
+    <h2>Welcome to the Resistance</h2>
+    <p>You weren’t born to trade in someone else's illusion. You were wired to rebel against it.</p>
+    <p><strong>The markets are a machine and most traders are still plugged in.</strong></p>
+    <p>Plugged into fake gurus.<br>Plugged into overhyped strategies.<br>Plugged into a fantasy they’ll never escape.</p>
+    <p>But not you.</p>
+    <p>If you're here, it's because something in you broke free.<br>You stopped chasing signals.<br>You stopped trusting screenshots.<br>You saw through the game.</p>
+    <p><strong>Now you're dangerous.</strong></p>
+    <h3>We are not a brand. We are not a business. We are a resistance.</h3>
+    <ul>
+      <li>We fight hype with truth.</li>
+      <li>We trade what’s real.</li>
+      <li>We expose the liars.</li>
+      <li>And we survive the system that was built to destroy you.</li>
+    </ul>
+    <p><em>Welcome to the other side.<br>Welcome to The Unfunded Resistance.</em></p>
+
+    <h1>Why We're Doing This</h1>
+    <p>Everyone’s selling a strategy. We're building something no one talks about: a way to survive. Because the truth is, trading isn’t what you think it is. And if you don’t wake up to that, you’ll keep losing.</p>
+
+    <h2>Because Strategy Isn’t the Answer</h2>
+    <p>You’ve been told success comes from the perfect setup. That if you follow the right mentor, it’ll finally click. It won’t.</p>
+    <p>Strategy is 10% of success. The rest? Discipline. Emotional control. Patience. Self-awareness.</p>
+    <p><em>We’re doing this because someone has to tell you the truth. No filters. No sugarcoating.</em></p>
+
+    <h2>Because the Industry Is Built to Exploit You</h2>
+    <p>This isn’t education, it’s a trap. Prop firms, “mentors,” and influencers profit more when you fail.</p>
+    <p><em>We’re doing this because someone has to call it what it is — exploitation dressed up as opportunity.</em></p>
+
+    <h2>Because You Have to Rewrite Your Psychology</h2>
+    <p>You don’t need another signal. You need a new identity.</p>
+    <p><strong>Built to Survive</strong> isn’t a strategy book. It’s a mental survival manual.</p>
+    <p><em>We’re doing this because no one else is giving you the tools to fix the real problem, yourself.</em></p>
+
+    <h2>Because Traders Need a Real Community</h2>
+    <p>Most groups are cults or echo chambers. Our Discord is raw, honest, and built for accountability.</p>
+    <p><em>We’re doing this because traders need support, not hype.</em></p>
+
+    <h2>Because the Gurus Aren’t Gods</h2>
+    <p>The Guruometer exposes the frauds. No filters. No partnerships. Just truth.</p>
+    <p><em>We’re doing this because transparency is the weapon they fear most.</em></p>
+
+    <h2>This is The Unfunded Resistance</h2>
+    <p>We’re not here to hold your hand. We’re here to wake you up. If you're ready to think for yourself and stop bleeding, welcome.</p>
+    <p><strong>You’ve found the right war.</strong></p>
+
+    <a href="https://instagram.com/YOURHANDLE" target="_blank" class="instagram-link">Follow on Instagram</a>
   </div>
-</section>
 
-<div class="controls">
-  <select id="sort">
-    <option value="desc">Sort: High to Low</option>
-    <option value="asc">Sort: Low to High</option>
-  </select>
-  <select id="bsFilter">
-    <option value="">Filter: Any BS</option>
-    <option value="1">BS Meter ≥ 1</option>
-    <option value="2">BS Meter ≥ 2</option>
-    <option value="3">BS Meter ≥ 3</option>
-    <option value="4">BS Meter ≥ 4</option>
-    <option value="5">BS Meter = 5</option>
-  </select>
-  <select id="ratingFilter">
-    <option value="">Filter: Any Rating</option>
-    <option value="4.5">Rating ≥ 4.5</option>
-    <option value="4.0">Rating ≥ 4.0</option>
-    <option value="3.5">Rating ≥ 3.5</option>
-    <option value="3.0">Rating ≥ 3.0</option>
-    <option value="2.5">Rating ≥ 2.5</option>
-  </select>
-  <input type="text" id="searchInput" placeholder="Search by name" />
-</div>
-
-<div id="topLists">
-  <div>
-    <h2>Top 5 Highest Rated</h2>
-    <div id="topRatedList"></div>
-  </div>
-  <div>
-    <h2>Top 5 Lowest Rated</h2>
-    <div id="worstRatedList"></div>
-  </div>
-</div>
-
-<!-- Guru Cards Load Here -->
-<div id="guruContainer">Loading guru cards...</div>
-
-<script>
-function updateTopLists() {
-  const cards = Array.from(document.querySelectorAll(".guru-card"));
-  const sorted = [...cards].sort((a, b) => parseFloat(b.dataset.score) - parseFloat(a.dataset.score));
-  const top5 = sorted.slice(0, 5);
-  const bottom5 = sorted.slice(-5).reverse();
-  const topRatedList = document.getElementById("topRatedList");
-  const worstRatedList = document.getElementById("worstRatedList");
-
-  topRatedList.innerHTML = "";
-  worstRatedList.innerHTML = "";
-
-  function createListItem(card) {
-    const name = card.querySelector(".guru-name")?.textContent || "Unknown";
-    const score = parseFloat(card.dataset.score).toFixed(1);
-    const container = document.createElement("div");
-    container.style.display = "flex";
-    container.style.alignItems = "center";
-    container.style.marginBottom = "10px";
-    container.style.gap = "10px";
-
-    const scoreText = document.createElement("div");
-    scoreText.textContent = score;
-    scoreText.style.fontWeight = "bold";
-    scoreText.style.minWidth = "30px";
-
-    const nameText = document.createElement("div");
-    nameText.textContent = name;
-    nameText.style.flex = "1";
-    nameText.style.fontSize = "0.9em";
-
-    const candles = document.createElement("div");
-    candles.classList.add("candles");
-    candles.setAttribute("data-score", score);
-
-    container.appendChild(scoreText);
-    container.appendChild(candles);
-    container.appendChild(nameText);
-
-    return container;
-  }
-
-  top5.forEach(card => {
-    const item = createListItem(card);
-    topRatedList.appendChild(item);
-    createCandles(parseFloat(card.dataset.score), item.querySelector(".candles"));
-  });
-
-  bottom5.forEach(card => {
-    const item = createListItem(card);
-    worstRatedList.appendChild(item);
-    createCandles(parseFloat(card.dataset.score), item.querySelector(".candles"));
-  });
-}
-
-function createCandles(score, container) {
-  const full = Math.floor(score);
-  const partial = score - full;
-  const isBS = container.parentElement?.textContent?.toLowerCase().includes("bs meter");
-  const color = isBS
-    ? (score <= 2.4 ? "green" : "red")
-    : (score >= 2.6 ? "green" : "red");
-
-  for (let i = 0; i < 5; i++) {
-    const c = document.createElement("div");
-    c.classList.add("candle");
-    if (i < full) {
-      c.classList.add(color);
-    } else if (i === full && partial > 0) {
-      c.classList.add(color, "partial");
-      c.style.opacity = partial.toFixed(2);
-    }
-    container.appendChild(c);
-  }
-}
-
-function sortCards() {
-  const order = document.getElementById("sort").value;
-  const cards = Array.from(document.querySelectorAll(".guru-card"));
-  cards.sort((a, b) =>
-    order === "asc"
-      ? parseFloat(a.dataset.score) - parseFloat(b.dataset.score)
-      : parseFloat(b.dataset.score) - parseFloat(a.dataset.score)
-  );
-  cards.forEach(card => document.getElementById("guruContainer").appendChild(card));
-}
-
-function filterCards() {
-  const minBS = parseInt(document.getElementById("bsFilter").value);
-  const minRating = parseFloat(document.getElementById("ratingFilter").value);
-  const query = document.getElementById("searchInput").value.toLowerCase();
-
-  document.querySelectorAll(".guru-card").forEach(card => {
-    const name = card.dataset.name || "";
-    const bs = parseFloat(card.dataset.bs) || 0;
-    const score = parseFloat(card.dataset.score) || 0;
-    const matchBS = !minBS || bs >= minBS;
-    const matchRating = !minRating || score >= minRating;
-    const matchQuery = name.includes(query);
-    card.style.display = matchBS && matchRating && matchQuery ? "block" : "none";
-  });
-}
-
-function toggleReview(btn) {
-  const full = btn.previousElementSibling;
-  const isOpen = full.style.display === "block";
-  full.style.display = isOpen ? "none" : "block";
-  btn.textContent = isOpen ? "Read More" : "Show Less";
-}
-
-function initGuruometer() {
-  document.querySelectorAll(".candlestick-rating").forEach(el => {
-    const score = parseFloat(el.dataset.score);
-    createCandles(score, el);
-  });
-
-  document.querySelectorAll(".candles").forEach(el => {
-    const score = parseFloat(el.dataset.score);
-    createCandles(score, el);
-  });
-
-  document.querySelectorAll('.toggle-btn').forEach(btn => {
-    btn.onclick = () => toggleReview(btn);
-  });
-
-  sortCards();
-  filterCards();
-  updateTopLists();
-}
-
-fetch("https://leedchampion55.github.io/UFR/Gurus.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("guruContainer").innerHTML = data;
-    initGuruometer();
-  });
-
-document.getElementById("sort").addEventListener("change", sortCards);
-document.getElementById("bsFilter").addEventListener("change", filterCards);
-document.getElementById("searchInput").addEventListener("input", filterCards);
-document.getElementById("ratingFilter").addEventListener("change", filterCards);
-</script>
-
+  <footer>
+    <hr style="margin: 2em auto; border-color: #444;">
+    <p>&copy; 2025 Unfunded Resistance. Built from scratch. No fluff. No filters.</p>
+  </footer>
 </body>
 </html>
