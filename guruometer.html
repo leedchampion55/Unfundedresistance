@@ -6,6 +6,31 @@
   <title>Guruometer</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
+    .overall-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.candlestick-rating {
+  display: flex;
+  gap: 4px;
+}
+
+.candle {
+  width: 16px;
+  height: 28px;
+  border: 2px solid #333;
+  background: #000;
+  transition: background 0.3s, opacity 0.3s;
+}
+
+.candle.green { background: #0f0; }
+.candle.red { background: #f00; }
     body {
       background: #000;
       color: #f5f5f5;
