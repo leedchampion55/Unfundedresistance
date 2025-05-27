@@ -20,7 +20,7 @@
 
   <section class="verified-journal">
     <style>
-      .verified-journal {
+     .verified-journal {
   margin: 0 auto;
   padding: 2em;
   color: #eee;
@@ -28,9 +28,15 @@
   background-color: #000;
   text-align: center;
   width: 100%;
-  max-width: 700px;
   box-sizing: border-box;
   overflow-wrap: break-word;
+}
+
+/* Only limit width on desktop/larger screens */
+@media (min-width: 768px) {
+  .verified-journal {
+    max-width: 700px;
+  }
 }
 
       .verified-journal h1 {
