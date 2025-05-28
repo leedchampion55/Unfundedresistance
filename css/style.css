@@ -31,4 +31,12 @@ footer {
   color: #888;
   text-align: center;
 }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2em;
+  font-family: 'Courier New', monospace;
+  color: #eee;
+  text-align: center;
+}
 
