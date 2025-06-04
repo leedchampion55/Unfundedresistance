@@ -302,10 +302,13 @@
 <!-- Guru Cards Load Here -->
 <div id="guruContainer">Loading guru cards...</div>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Count all elements with the .guru-card class
-    const guruCount = document.querySelectorAll(".guru-card").length;
-    document.getElementById("guru-count").textContent = guruCount;
+  // Wait for everything to finish loading (including dynamic content)
+  window.addEventListener("load", function () {
+    // Add a delay to ensure async-loaded content has time to appear
+    setTimeout(() => {
+      const guruCount = document.querySelectorAll(".guru-card").length;
+      document.getElementById("guru-count").textContent = guruCount;
+    }, 500); // Adjust if needed
   });
 </script>
 <script>
