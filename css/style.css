@@ -31,5 +31,23 @@ footer {
   color: #888;
   text-align: center;
 }
+.guru-card.highly-avoid {
+  background: #2a0000; /* dark red */
+  border: 2px solid #ff4444;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  position: relative;
+}
 
+.guru-card.highly-avoid::before {
+  content: "⚠️ HIGHLY AVOIDED";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: #ff0000;
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  font-size: 0.85em;
+  border-radius: 4px;
+}
 
