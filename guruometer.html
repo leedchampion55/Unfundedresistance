@@ -470,6 +470,15 @@ document.getElementById("sort").addEventListener("change", sortCards);
 document.getElementById("bsFilter").addEventListener("change", filterCards);
 document.getElementById("searchInput").addEventListener("input", filterCards);
 document.getElementById("ratingFilter").addEventListener("change", filterCards);
+function moveHighlyAvoidCards() {
+  const avoidContainer = document.getElementById("highlyAvoidContainer");
+  const cards = document.querySelectorAll(".guru-card.highly-avoid");
+
+  cards.forEach(card => {
+    avoidContainer.appendChild(card);
+  });
+}
+
 </script>
  <footer>
     <hr style="margin: 2em auto; border-color: #444;" />
