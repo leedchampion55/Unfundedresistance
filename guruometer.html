@@ -459,6 +459,11 @@ fetch("Gurus.html")
   .then(data => {
     document.getElementById("guruContainer").innerHTML = data;
     initGuruometer();
+
+    // Move highly avoid cards into their own section
+    document.querySelectorAll(".guru-card.highly-avoid").forEach(card => {
+      document.getElementById("highlyAvoidContainer").appendChild(card);
+    });
   });
 
 document.getElementById("sort").addEventListener("change", sortCards);
