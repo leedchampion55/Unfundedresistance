@@ -454,27 +454,31 @@ function initGuruometer() {
   updateTopLists();
 }
 
+
 fetch("Gurus.html")
   .then(response => response.text())
   .then(data => {
-    // Parse HTML into a temporary container
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = data;
 
     const allCards = tempDiv.querySelectorAll(".guru-card");
-    const mainContainer = document.getElementById("guruContainer");
+    const guruContainer = document.getElementById("guruContainer");
     const avoidContainer = document.getElementById("highlyAvoidContainer");
+
+    guruContainer.innerHTML = "";        // clear old "Loading guru cards..."
+    avoidContainer.innerHTML = "";       // clear placeholder too
 
     allCards.forEach(card => {
       if (card.classList.contains("highly-avoid")) {
         avoidContainer.appendChild(card);
       } else {
-        mainContainer.appendChild(card);
+        guruContainer.appendChild(card);
       }
     });
 
-    initGuruometer(); // Only run after cards are placed
+    initGuruometer();
   });
+
 
 document.getElementById("sort").addEventListener("change", sortCards);
 document.getElementById("bsFilter").addEventListener("change", filterCards);
