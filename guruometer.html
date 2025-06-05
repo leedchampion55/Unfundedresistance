@@ -457,14 +457,23 @@ function initGuruometer() {
 fetch("Gurus.html")
   .then(response => response.text())
   .then(data => {
-    document.getElementById("guruContainer").innerHTML = data;
-    initGuruometer();
-    moveHighlyAvoidCards();
+    // Parse HTML into a temporary container
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = data;
 
-    // Move highly avoid cards into their own section
-    document.querySelectorAll(".guru-card.highly-avoid").forEach(card => {
-      document.getElementById("highlyAvoidContainer").appendChild(card);
+    const allCards = tempDiv.querySelectorAll(".guru-card");
+    const mainContainer = document.getElementById("guruContainer");
+    const avoidContainer = document.getElementById("highlyAvoidContainer");
+
+    allCards.forEach(card => {
+      if (card.classList.contains("highly-avoid")) {
+        avoidContainer.appendChild(card);
+      } else {
+        mainContainer.appendChild(card);
+      }
     });
+
+    initGuruometer(); // Only run after cards are placed
   });
 
 document.getElementById("sort").addEventListener("change", sortCards);
