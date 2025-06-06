@@ -462,8 +462,8 @@ fetch("Gurus.html")
     const guruContainer = document.getElementById("guruContainer");
     const avoidContainer = document.getElementById("highlyAvoidContainer");
 
-    guruContainer.innerHTML = "";        // clear old "Loading guru cards..."
-    avoidContainer.innerHTML = "";       // clear placeholder too
+    guruContainer.innerHTML = "";
+    avoidContainer.innerHTML = "";
 
     allCards.forEach(card => {
       if (card.classList.contains("highly-avoid")) {
@@ -473,7 +473,10 @@ fetch("Gurus.html")
       }
     });
 
-    initGuruometer();
+    // ⬇️ Ensure all cards are now in the DOM before triggering any UI functions
+    requestAnimationFrame(() => {
+      initGuruometer();
+    });
   });
 
 
