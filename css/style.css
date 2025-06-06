@@ -39,7 +39,7 @@ footer {
 }
 
 .guru-card.highly-avoid::before {
-  content: "⚠️ HIGHLY AVOIDED";
+  content: "⚠️ HIGHLY AVOID";
   position: absolute;
   top: -10px;
   left: -10px;
