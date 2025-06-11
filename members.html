@@ -8,17 +8,106 @@
 </head>
 <body>
 
-  <nav>
-    <ul>
+  <style>
+  /* Base Styles */
+  nav {
+    background-color: #000;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f33;
+    font-family: 'Courier New', monospace;
+    position: relative;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #f33;
+    border-color: #f33;
+    background-color: #111;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #000;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      border-top: 1px solid #f33;
+      z-index: 99;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links a {
+      border: none;
+      padding: 15px;
+    }
+  }
+</style>
+
+<nav>
+  <div class="nav-container">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="built-to-survive.html">Built to Survive</a></li>
+      <li><a href="second-self.html">The Second Self</a></li>
       <li><a href="verified-journal.html">Verified Journal</a></li>
       <li><a href="guruometer.html">Guruometer</a></li>
       <li><a href="prove-it.html">Prove It</a></li>
       <li><a href="join.html">Join</a></li>
       <li><a href="members.html">Members</a></li>
     </ul>
-  </nav>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+  }
+</script>
 <style>
     .container img {
   width: 100%;
