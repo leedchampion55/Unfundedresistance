@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <style>
-  /* Base Styles */
+
+<!-- 🔧 NAV STYLES -->
+<style>
   nav {
     background-color: #000;
     padding: 15px 20px;
@@ -55,7 +56,6 @@
     background-color: #111;
   }
 
-  /* Mobile Styles */
   @media (max-width: 768px) {
     .menu-toggle {
       display: block;
@@ -83,8 +83,45 @@
       padding: 15px;
     }
   }
+
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+
+  .container h1, .container h2, .container h3 {
+    color: #f33;
+    margin-top: 2em;
+  }
+
+  .container a.button {
+    padding: 12px 24px;
+    background-color: #66f;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 2em;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.9em;
+    color: #777;
+  }
+
+  footer hr {
+    margin: 2em auto;
+    border-color: #444;
+  }
 </style>
 
+<!-- 🔧 NAV HTML -->
 <nav>
   <div class="nav-container">
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -108,50 +145,44 @@
   }
 </script>
 
-  <section style="padding: 40px 20px; margin: auto;">
-    <h1 style="text-align: center; font-size: 2.5em; margin-bottom: 30px;">The Second Self</h1>
+<!-- ✅ SECOND SELF CONTENT -->
+<div class="container">
+  <h1>The Second Self</h1>
+  <p>There are two versions of you trading your account — and one of them is sabotaging everything.</p>
 
-    <p style="font-size: 1.2em; margin-bottom: 30px;">
-      There are two versions of you trading your account.
-    </p>
+  <h2>Self One: The Strategist</h2>
+  <ul>
+    <li>Builds a system</li>
+    <li>Understands risk</li>
+    <li>Wants to improve</li>
+    <li>Reads books, sets rules, writes goals</li>
+    <li>Thinks weekends are for planning</li>
+  </ul>
 
-    <h2 style="font-size: 1.6em; color: #f33;">Self One: The Strategist</h2>
-    <ul style="margin-bottom: 40px;">
-      <li>Builds a system</li>
-      <li>Understands risk</li>
-      <li>Wants to improve</li>
-      <li>Reads books, sets rules, writes goals</li>
-      <li>Thinks weekends are for planning</li>
-    </ul>
+  <h2>Self Two: The Executor</h2>
+  <ul>
+    <li>Ignores the system</li>
+    <li>Chases losses</li>
+    <li>Trades out of boredom, anger, or FOMO</li>
+    <li>Breaks rules and blames the market</li>
+    <li>Thinks today is “the day it all turns around”</li>
+  </ul>
 
-    <h2 style="font-size: 1.6em; color: #f33;">Self Two: The Executor</h2>
-    <ul style="margin-bottom: 40px;">
-      <li>Ignores the system</li>
-      <li>Chases losses</li>
-      <li>Trades out of boredom, anger, or FOMO</li>
-      <li>Breaks rules and blames the market</li>
-      <li>Thinks today is “the day it all turns around”</li>
-    </ul>
+  <h3>The Brutal Truth</h3>
+  <p><strong>Self One isn’t the problem.</strong> He knows what to do.<br>
+  <strong>Self Two is the one touching your account.</strong> He needs retraining.</p>
 
-    <div style="background: #222; padding: 30px; border-left: 5px solid #f33; margin-bottom: 40px;">
-      <h3 style="margin-top: 0;">Here's the truth:</h3>
-      <p style="font-size: 1.1em;">
-        <strong>Self One isn’t the problem.</strong> He knows what to do.<br>
-        <strong>Self Two is the one touching your account.</strong> He needs retraining.
-      </p>
-    </div>
+  <p>You don’t need a better strategy. You need to survive yourself.<br>
+  <em>Built to Survive</em> exists to help you do exactly that.</p>
 
-    <p style="font-size: 1.2em; margin-bottom: 30px;">
-      You don't need another indicator. You need to control the version of you that shows up when it matters. 
-      *Built to Survive* is how you do that. This entire project exists to help you make Self Two obey Self One.
-    </p>
+  <a href="built-to-survive.html" class="button">Read Built to Survive</a>
+</div>
 
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="built-to-survive.html" style="background-color: #f33; color: white; padding: 15px 30px; text-decoration: none; font-size: 1.2em; border-radius: 5px;">
-        Read Built to Survive
-      </a>
-    </div>
-  </section>
+<!-- ✅ FOOTER -->
+<footer>
+  <hr />
+  <p>&copy; 2025 Unfunded Resistance. Built from scratch. No fluff. No filters.</p>
+</footer>
 
 </body>
 </html>
