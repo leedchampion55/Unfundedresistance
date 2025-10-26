@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Disallow anything you don’t want indexed (uncomment if needed)
+# Disallow: /private/
+# Disallow: /temp/
+# Disallow: /testing/
+
+# Sitemap location
+Sitemap: https://www.unfundedresistance.com/sitemap.xml
