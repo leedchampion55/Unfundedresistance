@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
+  <url>
+    <loc>https://www.unfundedresistance.com/index.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Automation -->
+  <url>
+    <loc>https://www.unfundedresistance.com/automation.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Built to Survive -->
+  <url>
+    <loc>https://www.unfundedresistance.com/built-to-survive.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- The Second Self -->
+  <url>
+    <loc>https://www.unfundedresistance.com/second-self.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Verified Journal -->
+  <url>
+    <loc>https://www.unfundedresistance.com/verified-journal.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Guruometer -->
+  <url>
+    <loc>https://www.unfundedresistance.com/guruometer.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Prove It -->
+  <url>
+    <loc>https://www.unfundedresistance.com/prove-it.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Dopamine -->
+  <url>
+    <loc>https://www.unfundedresistance.com/dopamine.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Join -->
+  <url>
+    <loc>https://www.unfundedresistance.com/join.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Members -->
+  <url>
+    <loc>https://www.unfundedresistance.com/members.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
