@@ -1,38 +1,38 @@
-// /js/site.js
-async function inject(targetId, url) {
-  const el = document.getElementById(targetId);
+// Safely inject partials
+async function inject(id, url) {
+  const el = document.getElementById(id);
   if (!el) return;
   const res = await fetch(url, { cache: "no-cache" });
   el.innerHTML = await res.text();
 }
 
-function bindHeaderBehaviors() {
+// Delegated click (survives async injection)
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-nav-toggle]");
+  if (!t) return;
+  const list = document.querySelector("[data-nav-list]");
+  if (!list) return;
+
+  list.classList.toggle("active");
+  const open = list.classList.contains("active");
+  t.setAttribute("aria-expanded", open ? "true" : "false");
+  document.body.classList.toggle("no-scroll", open);
+});
+
+// Close menu after selecting a link on mobile
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("[data-nav-list] a");
+  if (!link) return;
+  const list = document.querySelector("[data-nav-list]");
   const toggle = document.querySelector("[data-nav-toggle]");
-  const list   = document.querySelector("[data-nav-list]");
-  if (!toggle || !list) return;
+  if (!list) return;
+  list.classList.remove("active");
+  document.body.classList.remove("no-scroll");
+  if (toggle) toggle.setAttribute("aria-expanded", "false");
+});
 
-  const updateAria = () => {
-    const open = list.classList.contains("active");
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    document.body.classList.toggle("no-scroll", open);
-  };
-
-  const openClose = () => {
-    list.classList.toggle("active");
-    updateAria();
-  };
-
-  toggle.addEventListener("click", openClose);
-
-  // Close menu after selecting a link (mobile)
-  list.querySelectorAll("a").forEach(a => {
-    a.addEventListener("click", () => {
-      list.classList.remove("active");
-      updateAria();
-    });
-  });
-
-  // Mark active link
+// Highlight active link
+function highlightActive() {
   const current = location.pathname.replace(/\/$/, "/index.html").split("/").pop();
   document.querySelectorAll(".nav-links a").forEach(a => {
     const href = (a.getAttribute("href") || "").split("/").pop();
@@ -40,16 +40,9 @@ function bindHeaderBehaviors() {
   });
 }
 
-// Load header + footer, then bind events that depend on them
+// Load header/footer then highlight
 (async () => {
   await inject("site-header", "/partials/header.html");
-  bindHeaderBehaviors();
+  highlightActive();
   await inject("site-footer", "/partials/footer.html");
 })();
-
-// Optional: set target _blank for external links site-wide
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('a[href^="http"]').forEach(a => {
-    if (!a.href.includes(location.host)) a.setAttribute("target", "_blank");
-  });
-});
