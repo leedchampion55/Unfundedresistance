@@ -38,3 +38,34 @@ footer a{color:#4da3ff}
   .nav-links.show{display:flex}
   .nav-links a{border:none; padding:15px}
 }
+/* mobile nav */
+.menu-toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  padding: 10px 12px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.site-nav { position: relative; }
+.nav-links { display: flex; gap: 20px; }
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;              /* hidden by default on mobile */
+    flex-direction: column;
+    position: absolute;
+    left: 0; right: 0; top: 60px;
+    background: #000;
+    border-top: 1px solid #f33;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+  .nav-links.active { display: flex; }  /* <-- the class JS toggles */
+  body.no-scroll { overflow: hidden; }
+}
+.nav-links a.active { color:#f33; border:1px solid #f33; background:#111; }
