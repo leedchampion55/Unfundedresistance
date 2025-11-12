@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 
   <!-- Primary Meta Tags -->
   <title>The Unfunded Resistance — Real Traders. Real Data. No Hype.</title>
   <meta name="description" content="A trading community built on discipline, data and proof. Daily EA results, anti-guru honesty, and tools that enforce rules. Join the Resistance.">
   <link rel="canonical" href="https://www.unfundedresistance.com/">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Unfunded Resistance — Real Traders. Real Data. No Hype.">
   <meta property="og:description" content="A trading community built on discipline, data and proof. Daily EA results, anti-guru honesty, and tools that enforce rules. Join the Resistance.">
@@ -24,7 +26,7 @@
   <meta name="twitter:description" content="Discipline over dopamine — see the data, join the movement.">
   <meta name="twitter:image" content="https://www.unfundedresistance.com/img/og-cover.jpg">
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,51 +41,162 @@
     "description": "A movement for real traders — no hype, no gurus. Verified data, EA automation, and discipline that survives the market."
   }
   </script>
+</head>
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-BJ5QD8T2VJ');
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-BJ5QD8T2VJ');
+</script>
+<body>
   <style>
-    /* Page-scoped styles (keep brief; global styles should live in /css/style.css) */
-    .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
-    .btn { display:inline-block; padding:10px 16px; border-radius:999px; text-decoration:none; font-weight:700; border:1px solid #333; }
+  /* Base Styles */
+  nav {
+    background-color: #000;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f33;
+    font-family: 'Courier New', monospace;
+    position: relative;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #f33;
+    border-color: #f33;
+    background-color: #111;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #000;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      border-top: 1px solid #f33;
+      z-index: 99;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links a {
+      border: none;
+      padding: 15px;
+    }
+  }
+</style>
+
+<nav>
+  <div class="nav-container">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="automation.html">Automation</a></li>
+      <li><a href="cup.html">Consistency Cup</a></li>
+      <li><a href="built-to-survive.html">Built to Survive</a></li>
+      <li><a href="second-self.html">The Second Self</a></li>
+      <!--<li><a href="verified-journal.html">Verified Journal</a></li>-->
+      <li><a href="guruometer.html">Guruometer</a></li>
+      <li><a href="prove-it.html">Prove It</a></li>
+      <li><a href="dopamine.html">Dopamine</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="members.html">Members</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+  }
+</script>
+  <style>
+     .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+    .btn { display:inline-block; padding: 10px 16px; border-radius: 999px; text-decoration:none; font-weight:700; border:1px solid #333; }
     .btn-primary { background:#f33; color:#000; border-color:#f33; }
     .btn-ghost { background:transparent; color:#eee; }
-    .container img { width:100%; height:auto; max-width:100%; display:block; margin:0 auto 2em; }
+
   </style>
-</head>
-<body>
+  <style>
+    .container img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto 2em auto;
+}
+  </style>
 
-  <!-- HEADER PARTIAL WILL BE INJECTED HERE -->
-  <div id="site-header"></div>
-
-  <main class="container">
+  <div class="container">
     <img src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/UFRimage.png" alt="Unfunded Resistance" />
 
-    <h2>Welcome to the Resistance</h2>
-    <p>You weren’t built to follow signals. You were built to question them.</p>
-    <p><strong>The market is the machine — and most traders are still plugged in.</strong></p>
-    <p>Plugged into gurus.<br>Plugged into screenshots.<br>Plugged into the lie that discipline can be bought.</p>
-    <p>But not you.</p>
-    <p>You saw through the illusion.<br>You stopped chasing shortcuts.<br>You realised the enemy isn’t the market — it’s your conditioning.</p>
+  <h2>Welcome to the Resistance</h2>
+<p>You weren’t built to follow signals. You were built to question them.</p>
+<p><strong>The market is the machine — and most traders are still plugged in.</strong></p>
+<p>Plugged into gurus.<br>Plugged into screenshots.<br>Plugged into the lie that discipline can be bought.</p>
+<p>But not you.</p>
+<p>You saw through the illusion.<br>You stopped chasing shortcuts.<br>You realised the enemy isn’t the market — it’s your conditioning.</p>
+<!--<p><strong>That makes you dangerous.</strong></p>-->
 
-    <h3>We are not a brand. We are not a business. We are a resistance.</h3>
-    <ul>
-      <li>We fight hype with truth.</li>
-      <li>We trade reality, not fantasy.</li>
-      <li>We expose the liars selling dreams.</li>
-      <li>We survive what breaks the rest.</li>
-    </ul>
+<h3>We are not a brand. We are not a business. We are a resistance.</h3>
+<ul>
+  <li>We fight hype with truth.</li>
+  <li>We trade reality, not fantasy.</li>
+  <li>We expose the liars selling dreams.</li>
+  <li>We survive what breaks the rest.</li>
+</ul>
 
-    <p><em>Welcome to the other side.<br>Welcome to The Unfunded Resistance.</em></p>
+<p><em>Welcome to the other side.<br>Welcome to The Unfunded Resistance.</em></p>
 
-    <a href="/join.html" class="btn btn-primary">JOIN THE RESISTANCE</a>
+<a href="join.html" style="padding: 12px 24px; background-color: #66f; color: #000; font-weight: bold; text-decoration: none; border-radius: 4px; display: inline-block;">
+  JOIN THE RESISTANCE
+</a>
 
     <h1>Why We're Doing This</h1>
     <p>Everyone’s selling a strategy. We're building something no one talks about: a way to survive. Because the truth is, trading isn’t what you think it is. And if you don’t wake up to that, you’ll keep losing.</p>
@@ -113,24 +226,30 @@
     <h2>This is The Unfunded Resistance</h2>
     <p>We’re not here to hold your hand. We’re here to wake you up. If you're ready to think for yourself and stop bleeding, welcome.</p>
     <p><strong>You’ve found the right war.</strong></p>
+<a href="https://instagram.com/unfundedresistance" target="_blank" download
+         style="padding: 12px 24px; background-color: #66f; color: #000; font-weight: bold; text-decoration: none; border-radius: 4px; display: inline-block;">
+         FOLLOW ON INSTAGRAM
+      </a>
+    
+  </div>
+  <section class="footer-cta">
+         </div>
+        <h3 style="margin:.2em 0 .4em">Tired of breaking your own rules?</h3>
+        <p style="color:#bbb; margin:0">Members gain access to our trading tools that help with trading Discipline</p>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="automation.html"">See the Tools</a>
+         </div>
+         </section>
 
-    <a href="https://instagram.com/unfundedresistance" class="btn btn-ghost" target="_blank" rel="noopener">
-      FOLLOW ON INSTAGRAM
-    </a>
-  </main>
+  <footer style="background:#0b0b0b; color:#aaa; text-align:center; padding:20px; font-family:system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
+  <p>© 2025 Unfunded Resistance · All rights reserved</p>
+  <p style="margin-top:8px; font-size:14px;">
+    <a href="/terms-and-conditions.html" style="color:#4da3ff; text-decoration:none;">Terms</a> ·
+    <a href="/privacy.html" style="color:#4da3ff; text-decoration:none;">Privacy</a> ·
+    <a href="/refund.html" style="color:#4da3ff; text-decoration:none;">Refund</a>
+  </p>
+</footer>
 
-  <section class="footer-cta" style="text-align:center; padding:24px 12px;">
-    <h3 style="margin:.2em 0 .4em">Tired of breaking your own rules?</h3>
-    <p style="color:#bbb; margin:0">Members gain access to our trading tools that help with trading discipline.</p>
-    <div class="cta-row" style="justify-content:center;">
-      <a class="btn btn-primary" href="/automation.html">See the Tools</a>
-    </div>
-  </section>
-
-  <!-- FOOTER PARTIAL WILL BE INJECTED HERE -->
-  <div id="site-footer"></div>
-
-  <!-- Your unifier script (loads header/footer, mobile menu, active link, external link targets) -->
-  <script src="/js/site.js" defer></script>
 </body>
 </html>
