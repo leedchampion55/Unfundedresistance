@@ -19,7 +19,12 @@ nav{background:#000; border-bottom:1px solid var(--accent); position:relative}
 .nav-links a{padding:10px 15px; border:1px solid transparent; transition:.2s}
 .nav-links a:hover{background:#111; border-color:var(--accent); color:var(--accent)}
 .nav-links a.active{border-color:var(--accent); color:var(--accent)}
-
+.btn-primary:hover {
+  color: #000 !important;
+  background: #ff4a4a !important;  /* tiny brighter accent */
+  border-color: #ff4a4a !important;
+  transform: translateY(-1px);
+}
 .btn{display:inline-block; padding:10px 16px; border-radius:999px; font-weight:700; border:1px solid #333}
 .btn-primary{background:var(--accent); color:#000; border-color:var(--accent)}
 .btn-ghost{background:transparent; color:#eee}
