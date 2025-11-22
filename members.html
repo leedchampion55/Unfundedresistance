@@ -57,145 +57,234 @@
     gtag('config', 'G-BJ5QD8T2VJ');
   </script>
 
+  <!-- ✅ GLOBAL SHELL (matches updated site pages) -->
   <style>
     :root{
       --bg:#000;
       --panel:#0b0b0b;
       --panel-2:#111;
-      --border:#222;
-      --border-2:#333;
-      --text:#eaeaea;
-      --muted:#b8b8b8;
-      --muted-2:#9aa0a6;
+      --stroke:#222;
+      --stroke-soft:#1a1a1a;
       --red:#f33;
       --blue:#66f;
-      --radius:14px;
-      --radius-sm:10px;
+      --text:#e8e8e8;
+      --muted:#b5b5b5;
+      --radius:18px;
+      --radius-lg:22px;
+      --shadow: 0 0 0 1px var(--stroke-soft), 0 20px 60px rgba(0,0,0,.65);
     }
 
     body{
+      margin:0;
       background:var(--bg);
       color:var(--text);
       font-family:'Courier New', monospace;
+      line-height:1.6;
+    }
+
+    /* NAV — identical to new style */
+    nav{
+      background:#000;
+      padding:12px 18px;
+      border-bottom:1px solid var(--red);
+      font-family:'Courier New', monospace;
+      position:sticky;
+      top:0;
+      z-index:999;
+    }
+    .nav-container{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .menu-toggle{
+      display:none;
+      font-size:2em;
+      color:#fff;
+      cursor:pointer;
+      line-height:1;
+    }
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      list-style:none;
       margin:0;
       padding:0;
+      gap:18px;
     }
-
-    /* NAV (same as site) */
-    nav {
-      background-color: #000;
-      padding: 15px 20px;
-      border-bottom: 1px solid var(--red);
-      font-family: 'Courier New', monospace;
-      position: relative;
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+      font-size:1.05em;
+      padding:8px 10px;
+      border:1px solid transparent;
+      transition:.25s;
     }
-    .nav-container { display:flex; justify-content:space-between; align-items:center; }
-    .menu-toggle { display:none; font-size:2em; color:#fff; cursor:pointer; }
-    .nav-links { display:flex; flex-wrap:wrap; justify-content:center; list-style:none; margin:0; padding:0; gap:20px; }
-    .nav-links a { color:#fff; text-decoration:none; font-size:1.1em; padding:10px 15px; border:1px solid transparent; transition:all .3s ease; }
-    .nav-links a:hover { color:var(--red); border-color:var(--red); background-color:#111; }
+    .nav-links a:hover{
+      color:var(--red);
+      border-color:var(--red);
+      background:#0d0d0d;
+    }
     @media (max-width:768px){
-      .menu-toggle{ display:block; }
+      .menu-toggle{display:block;}
       .nav-links{
-        display:none; flex-direction:column; background:#000;
-        position:absolute; top:60px; left:0; width:100%;
-        text-align:center; border-top:1px solid var(--red); z-index:99;
+        display:none;
+        flex-direction:column;
+        background:#000;
+        position:absolute;
+        top:54px;
+        left:0;
+        width:100%;
+        text-align:center;
+        border-top:1px solid var(--red);
+        z-index:99;
+        padding:8px 0;
       }
-      .nav-links.active{ display:flex; }
-      .nav-links a{ border:none; padding:15px; }
+      .nav-links.active{display:flex;}
+      .nav-links a{border:none;padding:14px;}
     }
 
-    /* PAGE */
-    .container{
+    .page-wrap{
       max-width:1100px;
       margin:0 auto;
-      padding:28px 16px 60px;
+      padding:28px 18px 60px;
     }
 
     .hero{
-      background: linear-gradient(180deg, #070707, #000);
-      border:1px solid var(--border);
-      border-radius: calc(var(--radius) + 4px);
-      padding:28px 18px;
+      background: radial-gradient(1200px 500px at 10% -10%, rgba(255,0,0,.18), transparent 60%),
+                  linear-gradient(180deg, #0a0a0a, #050505 60%);
+      border-radius:var(--radius-lg);
+      padding:28px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--stroke-soft);
       text-align:center;
-      position:relative;
-      overflow:hidden;
     }
-    .badge{
-      display:inline-block;
-      padding:.45em .9em;
-      border:1px solid var(--red);
-      border-radius:999px;
-      color:#ddd;
+
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
       font-size:.9em;
-      margin-bottom:12px;
+      color:#ddd;
+      background:#0e0e0e;
+      border:1px solid #1f1f1f;
+      padding:6px 10px;
+      border-radius:999px;
+      margin-bottom:10px;
     }
-    .hero h1{
-      font-size: clamp(28px, 4vw, 46px);
-      margin:.2em 0 .4em;
-      letter-spacing:1px;
-      text-transform:uppercase;
+    .pill .dot{
+      width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;
     }
-    .hero p{
-      max-width:860px;
-      margin:0 auto;
-      color:var(--muted);
-      font-size: clamp(15px, 2.2vw, 18px);
-      line-height:1.7;
-    }
+
+    h1{font-size:42px;margin:6px 0 8px;letter-spacing:.5px;text-transform:uppercase;}
+    h2{font-size:22px;margin:0 0 10px;color:#fff;}
+    h3{font-size:18px;margin:0 0 6px;color:#fff;}
+    p{color:var(--muted);}
 
     .hero-art{
       margin:18px auto 0;
       max-width:760px;
     }
     .hero-art img{
-      width:100%; height:auto; display:block; border-radius:8px; opacity:.95;
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:12px;
+      border:1px solid #161616;
+      opacity:.95;
     }
 
-    .cta-row{
-      display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:16px;
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin-top:14px;
     }
     .btn{
-      display:inline-block; padding:11px 18px; border-radius:999px; text-decoration:none;
-      font-weight:700; border:1px solid var(--border-2);
-      transition: transform .12s ease, background .2s ease, border .2s ease; font-size:15px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      border:1px solid #333;
+      color:#eee;
+      background:transparent;
+      transition:.2s;
+      font-size:15px;
     }
-    .btn:hover{ transform: translateY(-1px); }
-    .btn-primary{ background:var(--red); color:#000; border-color:var(--red); }
-    .btn-blue{ background:var(--blue); color:#000; border-color:var(--blue); }
-    .btn-ghost{ background:transparent; color:#eee; }
+    .btn:hover{transform:translateY(-1px);border-color:#555;}
+    .btn-primary{background:var(--red);color:#000;border-color:var(--red);}
+    .btn-blue{background:var(--blue);color:#000;border-color:var(--blue);}
 
-    .grid{ display:grid; gap:18px; margin-top:20px; }
-    @media (min-width: 900px){
-      .grid-2{ grid-template-columns:1fr 1fr; }
-      .grid-3{ grid-template-columns:1fr 1fr 1fr; }
+    .section{
+      margin-top:22px;
+      background:var(--panel);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--stroke-soft);
+      text-align:left;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width:900px){
+      .grid-2,.grid-3{grid-template-columns:1fr;}
     }
 
     .card{
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
+      background:var(--panel-2);
+      border:1px solid var(--stroke);
+      border-radius:14px;
       padding:18px;
+      position:relative;
+      transition:.18s;
       text-align:left;
-      transition: border .2s ease, transform .12s ease;
     }
-    .card:hover{ border-color:#3a3a3a; transform: translateY(-2px); }
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:#3a3a3a;
+    }
 
-    .card h2{ margin:.1em 0 .4em; font-size:22px; }
-    .card p{ color:var(--muted); line-height:1.6; margin:.2em 0 1em; }
-
-    ul.features{ margin:0; padding-left:18px; }
-    ul.features li{ margin:.45em 0; color:#d4d4d4; line-height:1.5; }
-
-    .section{ margin-top:26px; }
-    .section h3{ margin:0 0 8px; font-size:20px; color:#fff; }
+    ul.features{
+      margin:0;
+      padding-left:18px;
+    }
+    ul.features li{
+      margin:.45em 0;
+      color:#d4d4d4;
+      line-height:1.5;
+      font-size:15px;
+    }
 
     .book-cover{
-      width:100%; max-width:300px; height:auto; border-radius:8px; border:1px solid #222;
+      width:100%;
+      max-width:320px;
+      height:auto;
+      border-radius:10px;
+      border:1px solid #222;
+      margin-top:8px;
     }
 
     footer{
-      background:#0b0b0b; color:#aaa; text-align:center; padding:20px;
+      text-align:center;
+      padding:28px 12px 50px;
+      color:#666;
+      font-size:.9em;
       font-family:system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
     footer a{ color:#4da3ff; text-decoration:none; }
@@ -214,7 +303,6 @@
         <li><a href="cup.html">Consistency Cup</a></li>
         <li><a href="built-to-survive.html">Built to Survive</a></li>
         <li><a href="second-self.html">The Second Self</a></li>
-        <!--<li><a href="verified-journal.html">Verified Journal</a></li>-->
         <!--<li><a href="guruometer.html">Guruometer</a></li>-->
         <li><a href="prove-it.html">Prove It</a></li>
         <li><a href="dopamine.html">Dopamine</a></li>
@@ -225,17 +313,16 @@
   </nav>
 
   <script>
-    function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('active');
+    function toggleMenu(){
+      document.getElementById('navLinks').classList.toggle('active');
     }
   </script>
 
-  <div class="container">
+  <main class="page-wrap">
 
     <!-- HERO / WELCOME -->
     <section class="hero">
-      <span class="badge">Members Portal</span>
+      <div class="pill"><span class="dot"></span> Members Portal</div>
       <h1>Welcome to the Resistance</h1>
       <p>
         No signals. No hype. No sugar-coated motivation.<br>
@@ -246,43 +333,51 @@
         <img src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/E683355B-3F13-41C5-B91F-046ADF08B78F.png" alt="Unfunded Resistance"/>
       </div>
 
-      <div class="cta-row">
+      <div class="btn-row">
         <a class="btn btn-blue" href="https://discord.gg/FUHdqx8q7q" rel="noopener">Open Private Discord</a>
-        <a class="btn btn-ghost" href="automation.html">Automation Engines</a>
-        <a class="btn btn-ghost" href="cup.html">Consistency Cup</a>
+        <a class="btn" href="automation.html">Automation Engines</a>
+        <a class="btn" href="cup.html">Consistency Cup</a>
       </div>
     </section>
 
     <!-- QUICK ACTIONS -->
-    <section class="grid grid-3 section" aria-label="Quick actions">
-      <article class="card">
-        <h2>📚 Download the Books</h2>
-        <p>Grab the core field manuals and start applying the drills immediately.</p>
-        <a class="btn btn-blue" href="#books">Go to Books</a>
-      </article>
+    <section class="section" aria-label="Quick actions">
+      <div class="grid-3">
+        <article class="card">
+          <h2>📚 Download the Books</h2>
+          <p>Grab the core field manuals and start applying the drills immediately.</p>
+          <div class="btn-row" style="justify-content:flex-start;">
+            <a class="btn btn-blue" href="#books">Go to Books</a>
+          </div>
+        </article>
 
-      <article class="card">
-        <h2>🤖 Get the Engines</h2>
-        <p>MT5 automation built to enforce your rules when your brain won’t.</p>
-        <a class="btn btn-primary" href="automation.html">See Engines</a>
-      </article>
+        <article class="card">
+          <h2>🤖 Get the Engines</h2>
+          <p>MT5 automation built to enforce your rules when your brain won’t.</p>
+          <div class="btn-row" style="justify-content:flex-start;">
+            <a class="btn btn-primary" href="automation.html">See Engines</a>
+          </div>
+        </article>
 
-      <article class="card">
-        <h2>⚔️ Enter the War Room</h2>
-        <p>Private channels, battle drills, verified journals and weekly reviews.</p>
-        <a class="btn btn-ghost" href="https://discord.gg/FUHdqx8q7q" rel="noopener">Open Discord</a>
-      </article>
+        <article class="card">
+          <h2>⚔️ Enter the War Room</h2>
+          <p>Private channels, battle drills, verified journals and weekly reviews.</p>
+          <div class="btn-row" style="justify-content:flex-start;">
+            <a class="btn" href="https://discord.gg/FUHdqx8q7q" rel="noopener">Open Discord</a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <!-- BOOKS -->
     <section id="books" class="section">
-      <h3 style="font-size:26px; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">The Weapons</h3>
-      <p style="color:var(--muted); max-width:900px;">
+      <h2 style="font-size:26px; text-transform:uppercase; letter-spacing:1px; margin-top:0;">The Weapons</h2>
+      <p style="max-width:900px;">
         These books are for traders who stopped believing the lies and started rebuilding properly.
         Manifesto first. Blueprint second. Survival always.
       </p>
 
-      <div class="grid grid-2" style="margin-top:12px;">
+      <div class="grid-2" style="margin-top:12px;">
 
         <!-- Book 1 -->
         <article class="card">
@@ -292,8 +387,9 @@
             Fake gurus, prop firm traps, Lambo cosplay — stripped down to reality.
           </p>
 
-          <!-- Use your correct cover URL here -->
-          <img class="book-cover" src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/9BB998E4-A4EA-473B-85B7-CF1A67DBC639.PNG" alt="The Unfunded Resistance Cover">
+          <img class="book-cover"
+               src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/9BB998E4-A4EA-473B-85B7-CF1A67DBC639.PNG"
+               alt="The Unfunded Resistance Cover">
 
           <ul class="features" style="margin-top:12px;">
             <li>Why the industry profits from your failure</li>
@@ -302,11 +398,13 @@
             <li>How to stop chasing shortcuts</li>
           </ul>
 
-          <div class="cta-row" style="justify-content:flex-start;">
-            <a class="btn btn-blue" href="https://whop.com/the-unfunded-resistance/the-resistance-membership/" rel="noopener">Access via Membership</a>
+          <div class="btn-row" style="justify-content:flex-start; margin-top:10px;">
+            <a class="btn btn-blue"
+               href="https://whop.com/the-unfunded-resistance/the-resistance-membership/"
+               rel="noopener">Access via Membership</a>
           </div>
 
-          <p style="font-size:13px;color:var(--muted-2);margin-top:8px;">
+          <p style="font-size:13px;color:#9aa0a6;margin-top:8px;">
             If downloads are hosted inside Whop/Discord, keep access centralized there.
           </p>
         </article>
@@ -319,7 +417,9 @@
             Built for traders who are done bleeding and ready to last.
           </p>
 
-          <img class="book-cover" src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/IMG_2083.jpg" alt="Built to Survive Cover">
+          <img class="book-cover"
+               src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/IMG_2083.jpg"
+               alt="Built to Survive Cover">
 
           <ul class="features" style="margin-top:12px;">
             <li>Dopamine loop + impulse control</li>
@@ -328,11 +428,13 @@
             <li>How to journal like a soldier</li>
           </ul>
 
-          <div class="cta-row" style="justify-content:flex-start;">
-            <a class="btn btn-primary" href="https://whop.com/the-unfunded-resistance/the-resistance-membership/" rel="noopener">Access via Membership</a>
+          <div class="btn-row" style="justify-content:flex-start; margin-top:10px;">
+            <a class="btn btn-primary"
+               href="https://whop.com/the-unfunded-resistance/the-resistance-membership/"
+               rel="noopener">Access via Membership</a>
           </div>
 
-          <p style="font-size:13px;color:var(--muted-2);margin-top:8px;">
+          <p style="font-size:13px;color:#9aa0a6;margin-top:8px;">
             Mobile tip: long-press the file in Discord/Whop to download.
           </p>
         </article>
@@ -340,19 +442,19 @@
     </section>
 
     <!-- DISCORD CTA -->
-    <section class="hero section" style="margin-top:26px;">
-      <span class="badge">Private Server</span>
+    <section class="hero" style="margin-top:22px;">
+      <div class="pill"><span class="dot"></span> Private Server</div>
       <h1 style="font-size: clamp(22px, 3.2vw, 34px);">Step in. Operate.</h1>
       <p>
         The Discord is where the work happens: daily drills, proof threads, reviews, and the War Room.
         If you’re here to survive, that’s your home base.
       </p>
-      <div class="cta-row">
+      <div class="btn-row">
         <a class="btn btn-blue" href="https://discord.gg/FUHdqx8q7q" rel="noopener">Open Private Discord</a>
       </div>
     </section>
 
-  </div>
+  </main>
 
   <footer>
     <p>© 2025 Unfunded Resistance · All rights reserved</p>
