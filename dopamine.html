@@ -62,168 +62,253 @@
     gtag('config', 'G-BJ5QD8T2VJ');
   </script>
 
+  <!-- ✅ GLOBAL NAV + SHELL (matches Home/Automation/BtS/Second Self/Prove It) -->
   <style>
-    :root {
-      --bg: #050505;
-      --panel: #0e0e0e;
-      --panel-2: #121212;
-      --text: #e8e8e8;
-      --muted: #b9b9b9;
-      --accent: #ff3333;
-      --accent-soft: rgba(255, 51, 51, 0.12);
-      --blue: #6aa6ff;
-      --radius: 16px;
-      --maxw: 1000px;
+    :root{
+      --bg:#000;
+      --panel:#0b0b0b;
+      --panel-2:#111;
+      --stroke:#222;
+      --stroke-soft:#1a1a1a;
+      --red:#f33;
+      --blue:#66f;
+      --text:#e8e8e8;
+      --muted:#b5b5b5;
+      --radius:18px;
+      --radius-lg:22px;
+      --shadow: 0 0 0 1px var(--stroke-soft), 0 20px 60px rgba(0,0,0,.65);
     }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      line-height: 1.6;
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Courier New', monospace;
+      line-height:1.6;
     }
 
-    /* NAV */
-    nav {
-      background-color: #000;
-      padding: 15px 20px;
-      border-bottom: 1px solid var(--accent);
-      font-family: 'Courier New', monospace;
-      position: sticky;
-      top: 0;
-      z-index: 999;
+    nav{
+      background:#000;
+      padding:12px 18px;
+      border-bottom:1px solid var(--red);
+      font-family:'Courier New', monospace;
+      position:sticky;
+      top:0;
+      z-index:999;
     }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: var(--maxw);
-      margin: 0 auto;
+    .nav-container{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
-    .menu-toggle { display: none; font-size: 2em; color: #fff; cursor: pointer; }
-    .nav-links {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      list-style: none; margin: 0; padding: 0; gap: 14px;
+    .menu-toggle{
+      display:none;
+      font-size:2em;
+      color:#fff;
+      cursor:pointer;
+      line-height:1;
     }
-    .nav-links a {
-      color: #fff; text-decoration: none; font-size: 1.05em;
-      padding: 8px 10px; border: 1px solid transparent; transition: all 0.25s ease;
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      list-style:none;
+      margin:0;
+      padding:0;
+      gap:18px;
     }
-    .nav-links a:hover {
-      color: var(--accent); border-color: var(--accent); background-color: #111;
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+      font-size:1.05em;
+      padding:8px 10px;
+      border:1px solid transparent;
+      transition:.25s;
     }
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      .nav-links {
-        display: none; flex-direction: column; background-color: #000;
-        position: absolute; top: 60px; left: 0; width: 100%;
-        text-align: center; border-top: 1px solid var(--accent);
+    .nav-links a:hover{
+      color:var(--red);
+      border-color:var(--red);
+      background:#0d0d0d;
+    }
+
+    @media (max-width:768px){
+      .menu-toggle{display:block;}
+      .nav-links{
+        display:none;
+        flex-direction:column;
+        background:#000;
+        position:absolute;
+        top:54px;
+        left:0;
+        width:100%;
+        text-align:center;
+        border-top:1px solid var(--red);
+        z-index:99;
+        padding:8px 0;
       }
-      .nav-links.active { display: flex; }
-      .nav-links a { border: none; padding: 14px; }
+      .nav-links.active{display:flex;}
+      .nav-links a{border:none;padding:14px;}
     }
 
-    /* LAYOUT */
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 26px 18px 70px; }
-    section { margin-top: 22px; }
-
-    .hero {
-      background: radial-gradient(1100px circle at top left, var(--accent-soft), transparent 55%), var(--panel);
-      border: 1px solid #1b1b1b;
-      border-radius: var(--radius);
-      padding: 22px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 16px;
-      align-items: center;
-    }
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
-
-    .badge {
-      display: inline-flex; gap: 8px; align-items: center;
-      background: #0b0b0b; border: 1px solid #1d1d1d; border-radius: 999px;
-      padding: 6px 10px; font-size: 13px; color: var(--muted);
-    }
-    .badge .dot {
-      width: 8px; height: 8px; border-radius: 999px;
-      background: var(--accent); box-shadow: 0 0 12px var(--accent);
+    .page-wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px 18px 60px;
     }
 
-    h1 { font-size: clamp(28px, 4.5vw, 42px); line-height: 1.1; margin: 10px 0; }
-    h2 { margin: 0 0 8px; font-size: clamp(18px, 2.7vw, 22px); }
-    h3 { margin: 0 0 6px; font-size: 18px; }
-
-    .sub { font-size: clamp(15px, 2.4vw, 18px); color: var(--muted); }
-
-    .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
-    .btn {
-      display:inline-block; padding: 11px 18px; border-radius: 999px;
-      text-decoration:none; font-weight:800; border:1px solid #333;
+    .hero{
+      background: radial-gradient(1200px 500px at 10% -10%, rgba(255,0,0,.18), transparent 60%),
+                  linear-gradient(180deg, #0a0a0a, #050505 60%);
+      border-radius:var(--radius-lg);
+      padding:28px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--stroke-soft);
     }
-    .btn-primary { background: var(--accent); color:#000; border-color: var(--accent); }
-    .btn-ghost { background: transparent; color: var(--text); }
-    .btn-blue { background: var(--blue); color:#000; border-color: var(--blue); }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid #1b1b1b;
-      border-radius: var(--radius);
-      padding: 16px;
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:center;
     }
-    .card p, .card li { color: var(--muted); font-size: 15px; }
-
-    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
-
-    .module {
-      background: var(--panel);
-      border: 1px solid #1b1b1b;
-      border-radius: var(--radius);
-      padding: 16px;
-      position: relative;
-    }
-    .module .label {
-      position: absolute; top: 12px; right: 12px;
-      font-size: 12px; color: var(--muted);
-      border: 1px solid #222; background: #0a0a0a;
-      padding: 4px 8px; border-radius: 999px;
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr;}
     }
 
-    ul, ol { padding-left: 18px; margin: 8px 0 0; }
-    li { margin: 6px 0; }
-
-    .quote {
-      background: var(--panel-2);
-      border-left: 3px solid var(--blue);
-      padding: 12px 14px;
-      border-radius: 10px;
-      color: #c7c7c7;
-      font-style: italic;
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      font-size:.9em;
+      color:#ddd;
+      background:#0e0e0e;
+      border:1px solid #1f1f1f;
+      padding:6px 10px;
+      border-radius:999px;
+      margin-bottom:10px;
+    }
+    .pill .dot{
+      width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;
     }
 
-    .divider {
-      border: none; height: 1px; background: #1e1e1e; margin: 22px 0;
+    h1{font-size:42px;margin:6px 0 8px;letter-spacing:.5px;}
+    h2{font-size:22px;margin:0 0 10px;color:#fff;}
+    h3{font-size:18px;margin:0 0 6px;color:#fff;}
+    p{color:var(--muted);}
+
+    a{color:var(--blue);}
+
+    .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      border:1px solid #333;
+      color:#eee;
+      background:transparent;
+      transition:.2s;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:#555;}
+    .btn-primary{background:var(--red);color:#000;border-color:var(--red);}
+    .btn-blue{background:var(--blue);color:#000;border-color:var(--blue);}
+
+    .section{
+      margin-top:22px;
+      background:var(--panel);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--stroke-soft);
     }
 
-    .diagnostic li strong { color: var(--text); }
-
-    .drill {
-      display:flex; gap: 10px; align-items:flex-start;
-      background: #0b0b0b; border: 1px dashed #2b2b2b;
-      border-radius: 12px; padding: 12px 14px;
-      margin-top: 10px;
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
     }
-    .drill .icon {
-      font-weight: 900; font-size: 16px; color: #000;
-      background: var(--accent); padding: 6px 8px; border-radius: 8px;
-      min-width: 34px; text-align:center;
+    @media (max-width:900px){
+      .grid-2{grid-template-columns:1fr;}
     }
 
-    footer {
-      background:#0b0b0b; color:#aaa; text-align:center; padding:20px; font-size: 14px;
+    .card{
+      background:var(--panel-2);
+      border:1px solid var(--stroke);
+      border-radius:14px;
+      padding:16px;
     }
-    footer a { color:#4da3ff; text-decoration:none; }
+
+    .quote{
+      background:#0f0f0f;
+      border-left:3px solid var(--blue);
+      padding:12px 14px;
+      border-radius:10px;
+      color:#c7c7c7;
+      font-style:italic;
+      margin:10px 0;
+    }
+
+    .module{
+      background:var(--panel);
+      border:1px solid var(--stroke-soft);
+      border-radius:var(--radius);
+      padding:18px;
+      position:relative;
+      box-shadow:var(--shadow);
+    }
+    .module .label{
+      position:absolute;
+      top:12px; right:12px;
+      font-size:12px;
+      color:#cfcfcf;
+      border:1px solid #2a2a2a;
+      background:#0a0a0a;
+      padding:4px 8px;
+      border-radius:999px;
+    }
+
+    ul, ol{padding-left:18px;margin:8px 0 0;}
+    li{margin:6px 0;color:var(--muted);font-size:15px;}
+    li strong{color:#fff;}
+
+    .divider{
+      border:none;height:1px;background:#1e1e1e;margin:22px 0;
+    }
+
+    .drill{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      background:#0b0b0b;
+      border:1px dashed #2b2b2b;
+      border-radius:12px;
+      padding:12px 14px;
+      margin-top:10px;
+    }
+    .drill .icon{
+      font-weight:900;
+      font-size:16px;
+      color:#000;
+      background:var(--red);
+      padding:6px 8px;
+      border-radius:8px;
+      min-width:34px;
+      text-align:center;
+      line-height:1;
+      margin-top:2px;
+    }
+
+    footer{
+      text-align:center;
+      padding:28px 12px 50px;
+      color:#666;
+      font-size:.9em;
+    }
+    footer hr{margin:2em auto;border-color:#222;}
   </style>
 </head>
 
@@ -238,8 +323,7 @@
       <li><a href="cup.html">Consistency Cup</a></li>
       <li><a href="built-to-survive.html">Built to Survive</a></li>
       <li><a href="second-self.html">The Second Self</a></li>
-      <!--<li><a href="verified-journal.html">Verified Journal</a></li>-->
-      <!--<li><a href="guruometer.html">Guruometer</a></li>-->
+      <li><a href="guruometer.html">Guruometer</a></li>
       <li><a href="prove-it.html">Prove It</a></li>
       <li><a href="dopamine.html">Dopamine</a></li>
       <li><a href="join.html">Join</a></li>
@@ -249,48 +333,51 @@
 </nav>
 
 <script>
-  function toggleMenu() {
+  function toggleMenu(){
     document.getElementById('navLinks').classList.toggle('active');
   }
 </script>
 
-<div class="wrap">
+<main class="page-wrap">
 
   <!-- HERO -->
-  <header class="hero">
-    <div>
-      <div class="badge"><span class="dot"></span> Psychology course • Survival layer</div>
-      <h1>Dopamine & Trading</h1>
-      <p class="sub">
-        Most traders don’t lose because they’re stupid.  
-        They lose because their brain gets addicted to the loop.
-        This page explains the mechanism — and gives you drills to break it.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#modules">Start the course</a>
-        <a class="btn btn-ghost" href="#drills">Jump to drills</a>
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="pill"><span class="dot"></span> Psychology course • Survival layer</div>
+        <h1>Dopamine &amp; Trading</h1>
+        <p>
+          Most traders don’t lose because they’re stupid.  
+          They lose because their brain gets addicted to the loop.
+          This page explains the mechanism — and gives you drills to break it.
+        </p>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#modules">Start the course</a>
+          <a class="btn" href="#drills">Jump to drills</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">The one-line truth</h3>
+        <p style="margin-bottom:0;">
+          You’re not trading a strategy when dopamine is driving you.  
+          You’re just feeding a habit and calling it “learning.”
+        </p>
       </div>
     </div>
-
-    <div class="card">
-      <h3 style="margin-top:0;">The one-line truth</h3>
-      <p style="margin-bottom:0;">
-        You’re not trading a strategy when dopamine is driving you.  
-        You’re just feeding a habit and calling it “learning.”
-      </p>
-    </div>
-  </header>
+  </section>
 
   <!-- INTRO -->
-  <section class="card">
+  <section class="section">
     <p style="margin-top:0;">
-      Dopamine isn’t “pleasure.” It’s **anticipation.**
+      Dopamine isn’t “pleasure.” It’s <strong>anticipation.</strong>
       It spikes before reward, not after it.
     </p>
     <p>
       In trading, that means your brain gets high on:
       setups forming, orders placed, candles moving, P/L changing —  
-      even *checking charts for no reason*.
+      even <em>checking charts for no reason</em>.
     </p>
     <p style="margin-bottom:0;">
       If you’ve ever known exactly what to do and still broke your rules…  
@@ -305,7 +392,7 @@
       <h2>What dopamine actually does</h2>
       <p>
         Dopamine’s job is to teach you what to repeat.  
-        It rewards **behavior that might lead to reward**, even if that behavior destroys you later.
+        It rewards <strong>behavior that might lead to reward</strong>, even if that behavior destroys you later.
       </p>
       <ul>
         <li>Setup appears → dopamine rises</li>
@@ -320,9 +407,7 @@
       <div class="label">Module 2</div>
       <h2>The dopamine loop</h2>
       <div class="quote">Anticipation → Action → Outcome → Learning → Repeat</div>
-      <p>
-        Trading is a perfect addiction machine because it mixes:
-      </p>
+      <p>Trading is a perfect addiction machine because it mixes:</p>
       <ul>
         <li><strong>Uncertainty</strong> (maybe this one is a big win)</li>
         <li><strong>Speed</strong> (instant feedback)</li>
@@ -353,7 +438,7 @@
       <div class="label">Module 4</div>
       <h2>The random reward trap</h2>
       <p>
-        Markets run on variable rewards — the most addictive schedule known to psychology.
+        Markets run on variable rewards — the most addictive schedule known to psychology.  
         Same as slot machines.
       </p>
       <ul>
@@ -368,10 +453,10 @@
   <hr class="divider">
 
   <!-- DIAGNOSTIC -->
-  <section class="card">
+  <section class="section">
     <h2>Dopamine Loop Diagnostic</h2>
     <p>If these sound like you, you’re not trading — you’re looping:</p>
-    <ul class="diagnostic">
+    <ul>
       <li><strong>You feel bored without a trade open.</strong></li>
       <li><strong>You check charts like social media.</strong></li>
       <li><strong>You click “just to be involved.”</strong></li>
@@ -383,7 +468,7 @@
   </section>
 
   <!-- DRILLS -->
-  <section id="drills" class="card">
+  <section id="drills" class="section">
     <h2>Battle Drills to Break the Loop</h2>
     <p>
       These drills don’t make trading fun.  
@@ -407,8 +492,8 @@
       <div>
         <h3>Reward rules, not wins</h3>
         <p>
-          Your brain is trained to reward P/L.
-          Flip it.
+          Your brain is trained to reward P/L.  
+          Flip it.  
           Track a “rule score” daily and celebrate obedience, not outcomes.
         </p>
       </div>
@@ -454,30 +539,26 @@
   </section>
 
   <!-- WRAP -->
-  <section class="card" style="text-align:center;">
+  <section class="section" style="text-align:center;">
     <h2>Final truth</h2>
-    <p class="sub" style="max-width:760px; margin:0 auto;">
+    <p style="max-width:760px; margin:0 auto;">
       You can’t remove dopamine from trading.  
-      But you *can* stop letting it drive the car.
+      But you <em>can</em> stop letting it drive the car.  
       The traders who survive aren’t emotionless —  
       they’re trained to obey even when emotion screams.
     </p>
 
-    <div class="cta-row" style="justify-content:center; margin-top:14px;">
+    <div class="btn-row" style="justify-content:center; margin-top:14px;">
       <a class="btn btn-primary" href="built-to-survive.html">Built to Survive</a>
       <a class="btn btn-blue" href="prove-it.html">Prove It Standard</a>
     </div>
   </section>
 
-</div><!-- /wrap -->
+</main>
 
 <footer>
-  <p>© 2025 Unfunded Resistance · All rights reserved</p>
-  <p style="margin-top:8px;">
-    <a href="/terms-and-conditions.html">Terms</a> ·
-    <a href="/privacy.html">Privacy</a> ·
-    <a href="/refund.html">Refund</a>
-  </p>
+  <hr />
+  <p>© 2025 Unfunded Resistance. Built from scratch. No fluff. No filters.</p>
 </footer>
 
 </body>
