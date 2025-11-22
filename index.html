@@ -7,13 +7,13 @@
 
   <!-- Primary Meta Tags -->
   <title>The Unfunded Resistance — Real Traders. Real Data. No Hype.</title>
-  <meta name="description" content="A trading community built on discipline, data and proof. Daily EA results, anti-guru honesty, and tools that enforce rules. Join the Resistance.">
+  <meta name="description" content="A trading community built on discipline, data, and proof. Psychology-first education, verified results, and tools that enforce rules.">
   <link rel="canonical" href="https://www.unfundedresistance.com/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Unfunded Resistance — Real Traders. Real Data. No Hype.">
-  <meta property="og:description" content="A trading community built on discipline, data and proof. Daily EA results, anti-guru honesty, and tools that enforce rules. Join the Resistance.">
+  <meta property="og:description" content="A trading community built on discipline, data and proof. Daily EA results, anti-guru honesty, and tools that enforce rules.">
   <meta property="og:url" content="https://www.unfundedresistance.com/">
   <meta property="og:image" content="https://www.unfundedresistance.com/img/og-cover.jpg">
   <meta property="og:site_name" content="The Unfunded Resistance">
@@ -33,101 +33,255 @@
     "url": "https://www.unfundedresistance.com/",
     "logo": "https://www.unfundedresistance.com/img/logo.png",
     "sameAs": [
-      "https://www.instagram.com/pippiedpiper",
+      "https://www.instagram.com/unfundedresistance",
       "https://discord.gg/FUHdqx8q7q"
     ],
     "description": "A movement for real traders — no hype, no gurus. Verified data, EA automation, and discipline that survives the market."
   }
   </script>
-</head>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BJ5QD8T2VJ');
+  </script>
 
-  gtag('config', 'G-BJ5QD8T2VJ');
-</script>
-<body>
   <style>
-  /* Base Styles */
-  nav {
-    background-color: #000;
-    padding: 15px 20px;
-    border-bottom: 1px solid #f33;
-    font-family: 'Courier New', monospace;
-    position: relative;
-  }
-
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu-toggle {
-    display: none;
-    font-size: 2em;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
-  }
-
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    color: #f33;
-    border-color: #f33;
-    background-color: #111;
-  }
-
-  /* Mobile Styles */
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
+    :root {
+      --bg: #050505;
+      --panel: #0e0e0e;
+      --panel-2: #121212;
+      --text: #e8e8e8;
+      --muted: #b9b9b9;
+      --accent: #ff3333;
+      --accent-soft: rgba(255, 51, 51, 0.12);
+      --blue: #6aa6ff;
+      --radius: 16px;
+      --maxw: 1100px;
     }
 
-    .nav-links {
-      display: none;
-      flex-direction: column;
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+    }
+
+    /* NAV (your existing style kept) */
+    nav {
       background-color: #000;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      border-top: 1px solid #f33;
-      z-index: 99;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--accent);
+      font-family: 'Courier New', monospace;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-
-    .nav-links.active {
+    .nav-container {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2em;
+      color: #fff;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 14px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.05em;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background-color: #111;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid var(--accent);
+      }
+      .nav-links.active { display: flex; }
+      .nav-links a { border: none; padding: 14px; }
     }
 
-    .nav-links a {
-      border: none;
-      padding: 15px;
+    /* LAYOUT */
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 28px 18px 70px; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: center;
+      margin-top: 18px;
     }
-  }
-</style>
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid #1d1d1d;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .badge .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.1;
+      margin: 12px 0;
+      letter-spacing: -0.5px;
+    }
+    .sub {
+      font-size: clamp(15px, 2.4vw, 18px);
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+    .btn {
+      display:inline-block;
+      padding: 11px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid #333;
+      letter-spacing: .2px;
+    }
+    .btn-primary { background: var(--accent); color:#000; border-color: var(--accent); }
+    .btn-ghost { background: transparent; color: var(--text); }
+    .btn-blue { background: var(--blue); color:#000; border-color: var(--blue); }
+
+    .hero-card {
+      background: radial-gradient(1200px circle at top left, var(--accent-soft), transparent 45%),
+                  var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .stat {
+      background: var(--panel-2);
+      border: 1px solid #1c1c1c;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .stat .num { font-size: 20px; font-weight: 800; }
+    .stat .lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    section { margin-top: 34px; }
+    .section-head {
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom: 12px;
+    }
+    .section-head h2 { margin:0; font-size: 24px; letter-spacing: -0.2px; }
+    .section-head p { margin:0; color: var(--muted); }
+
+    .grid-3 {
+      display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 16px;
+      line-height: 1.55;
+    }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin:0; color: var(--muted); font-size: 15px; }
+
+    .list {
+      display:grid; gap: 8px; margin-top: 8px; color: var(--muted);
+      font-size: 15px;
+    }
+    .list .item {
+      display:flex; gap:8px; align-items:flex-start;
+      background: var(--panel-2);
+      border:1px solid #1c1c1c;
+      padding: 10px 12px;
+      border-radius: 12px;
+    }
+    .tick {
+      width: 18px; height: 18px; border-radius: 5px; background: var(--accent);
+      display:grid; place-items:center; color:#000; font-weight:900; font-size:12px; flex:0 0 auto; margin-top:2px;
+    }
+
+    .split {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+
+    .quote {
+      font-size: 17px; line-height: 1.6; color: var(--text);
+    }
+    .quote small { color: var(--muted); display:block; margin-top:6px; }
+
+    .footer-cta {
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.03)),
+                  var(--panel);
+      border-top: 1px solid #1d1d1d;
+      padding: 26px 18px;
+      margin-top: 38px;
+    }
+    .footer-cta .wrap { padding-bottom: 0; }
+
+    footer {
+      background:#0b0b0b;
+      color:#aaa;
+      text-align:center;
+      padding:20px;
+      font-size: 14px;
+    }
+    footer a { color:#4da3ff; text-decoration:none; }
+  </style>
+</head>
+
+<body>
 
 <nav>
   <div class="nav-container">
@@ -154,98 +308,194 @@
     navLinks.classList.toggle('active');
   }
 </script>
-  <style>
-     .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
-    .btn { display:inline-block; padding: 10px 16px; border-radius: 999px; text-decoration:none; font-weight:700; border:1px solid #333; }
-    .btn-primary { background:#f33; color:#000; border-color:#f33; }
-    .btn-ghost { background:transparent; color:#eee; }
 
-  </style>
-  <style>
-    .container img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  display: block;
-  margin: 0 auto 2em auto;
-}
-  </style>
+<div class="wrap">
 
-  <div class="container">
-    <img src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/UFRimage.png" alt="Unfunded Resistance" />
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="badge"><span class="dot"></span> Psychology-first trading community</div>
+      <h1>Trade like an adult. <br>With rules, data, and proof.</h1>
+      <p class="sub">
+        The Unfunded Resistance is a home for traders who are tired of hype and shortcuts.
+        We focus on what actually drives long-term profitability: repeatable execution,
+        risk control, and the psychology to survive variance.
+      </p>
 
-  <h2>Welcome to the Resistance</h2>
-<p>You weren’t built to follow signals. You were built to question them.</p>
-<p><strong>The market is the machine — and most traders are still plugged in.</strong></p>
-<p>Plugged into gurus.<br>Plugged into screenshots.<br>Plugged into the lie that discipline can be bought.</p>
-<p>But not you.</p>
-<p>You saw through the illusion.<br>You stopped chasing shortcuts.<br>You realised the enemy isn’t the market — it’s your conditioning.</p>
-<!--<p><strong>That makes you dangerous.</strong></p>-->
-
-<h3>We are not a brand. We are not a business. We are a resistance.</h3>
-<ul>
-  <li>We fight hype with truth.</li>
-  <li>We trade reality, not fantasy.</li>
-  <li>We expose the liars selling dreams.</li>
-  <li>We survive what breaks the rest.</li>
-</ul>
-
-<p><em>Welcome to the other side.<br>Welcome to The Unfunded Resistance.</em></p>
-
-<a href="join.html" style="padding: 12px 24px; background-color: #66f; color: #000; font-weight: bold; text-decoration: none; border-radius: 4px; display: inline-block;">
-  JOIN THE RESISTANCE
-</a>
-
-    <h1>Why We're Doing This</h1>
-    <p>Everyone’s selling a strategy. We're building something no one talks about: a way to survive. Because the truth is, trading isn’t what you think it is. And if you don’t wake up to that, you’ll keep losing.</p>
-
-    <h2>Because Strategy Isn’t the Answer</h2>
-    <p>You’ve been told success comes from the perfect setup. That if you follow the right mentor, it’ll finally click. It won’t.</p>
-    <p>Strategy is 10% of success. The rest? Discipline. Emotional control. Patience. Self-awareness.</p>
-    <p><em>We’re doing this because someone has to tell you the truth. No filters. No sugarcoating.</em></p>
-
-    <h2>Because the Industry Is Built to Exploit You</h2>
-    <p>This isn’t education, it’s a trap. Prop firms, “mentors,” and influencers profit more when you fail.</p>
-    <p><em>We’re doing this because someone has to call it what it is — exploitation dressed up as opportunity.</em></p>
-
-    <h2>Because You Have to Rewrite Your Psychology</h2>
-    <p>You don’t need another signal. You need a new identity.</p>
-    <p><strong>Built to Survive</strong> isn’t a strategy book. It’s a mental survival manual.</p>
-    <p><em>We’re doing this because no one else is giving you the tools to fix the real problem, yourself.</em></p>
-
-    <h2>Because Traders Need a Real Community</h2>
-    <p>Most groups are cults or echo chambers. Our Discord is raw, honest, and built for accountability.</p>
-    <p><em>We’re doing this because traders need support, not hype.</em></p>
-
-    <h2>Because the Gurus Aren’t Gods</h2>
-    <p>The Guruometer exposes the frauds. No filters. No partnerships. Just truth.</p>
-    <p><em>We’re doing this because transparency is the weapon they fear most.</em></p>
-
-    <h2>This is The Unfunded Resistance</h2>
-    <p>We’re not here to hold your hand. We’re here to wake you up. If you're ready to think for yourself and stop bleeding, welcome.</p>
-    <p><strong>You’ve found the right war.</strong></p>
-<a href="https://instagram.com/unfundedresistance" target="_blank" download
-         style="padding: 12px 24px; background-color: #66f; color: #000; font-weight: bold; text-decoration: none; border-radius: 4px; display: inline-block;">
-         FOLLOW ON INSTAGRAM
-      </a>
-    
-  </div>
-  <section class="footer-cta">
-         </div>
-        <h3 style="margin:.2em 0 .4em">Tired of breaking your own rules?</h3>
-        <p style="color:#bbb; margin:0">Members gain access to our trading tools that help with trading Discipline</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="join.html">Join the Discord</a>
+        <a class="btn btn-ghost" href="built-to-survive.html">Read "Built to Survive"</a>
+        <a class="btn btn-blue" href="automation.html">View the Tools</a>
       </div>
-      <div>
-        <a class="btn btn-primary" href="automation.html"">See the Tools</a>
-         </div>
-         </section>
 
-  <footer style="background:#0b0b0b; color:#aaa; text-align:center; padding:20px; font-family:system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
+      <div class="list" style="margin-top:14px;">
+        <div class="item"><div class="tick">✓</div><div>Verified results and transparent journals.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Battle-drills that build discipline under pressure.</div></div>
+        <div class="item"><div class="tick">✓</div><div>No gurus. No signal selling. No fantasy trading.</div></div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div style="font-weight:800; font-size:16px;">What members get</div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="num">Daily</div>
+          <div class="lbl">EA / system logs</div>
+        </div>
+        <div class="stat">
+          <div class="num">Psych</div>
+          <div class="lbl">discipline training</div>
+        </div>
+        <div class="stat">
+          <div class="num">Proof</div>
+          <div class="lbl">not screenshots</div>
+        </div>
+      </div>
+
+      <div style="font-size:14px; color:var(--muted); margin-top:6px;">
+        You don’t need motivation. You need a structure that makes
+        self-sabotage harder than execution.
+      </div>
+
+      <img
+        src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/UFRimage.png"
+        alt="Unfunded Resistance"
+        style="width:100%; height:auto; border-radius:12px; margin-top:6px; border:1px solid #1d1d1d;"
+      />
+    </div>
+  </header>
+
+  <!-- WHY -->
+  <section>
+    <div class="section-head">
+      <h2>Why we exist</h2>
+      <p>Because most traders lose for the same boring reasons.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Strategy isn’t the bottleneck</h3>
+        <p>
+          Most people don’t fail from a lack of setups.
+          They fail from over-risking, over-trading, and breaking rules mid-drawdown.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>The industry feeds on delusion</h3>
+        <p>
+          Gurus, flashy screenshots, “100% win rate” bots —
+          the business model is your hope, not your progress.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Trading is probability</h3>
+        <p>
+          Your feelings don’t change outcomes.
+          Your expectancy and risk management do.
+          We train traders to think in numbers, not narratives.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="split">
+    <div class="card">
+      <h3>Inside the Discord</h3>
+      <p>
+        A structured, no-BS environment built for accountability.
+        Not another meme farm or echo chamber.
+      </p>
+
+      <div class="list">
+        <div class="item"><div class="tick">✓</div><div><strong>Psychology 101</strong> — dopamine, fear, revenge, FOMO.</div></div>
+        <div class="item"><div class="tick">✓</div><div><strong>Probability Hub</strong> — expectancy, streaks, variance, R-math.</div></div>
+        <div class="item"><div class="tick">✓</div><div><strong>Battle Drills</strong> — repeatable routines for consistency.</div></div>
+        <div class="item"><div class="tick">✓</div><div><strong>Consistency Cup</strong> — discipline challenge, not a profit flex.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Tools that enforce rules</h3>
+      <p>
+        If your discipline collapses when you’re tired or tilted,
+        you don’t need more willpower — you need guardrails.
+      </p>
+
+      <div class="list">
+        <div class="item"><div class="tick">✓</div><div>TradeRuleEnforcer EA with risk locks + rule violations.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Session limits, daily/weekly drawdown protection.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Automation that keeps you consistent when emotions don’t.</div></div>
+      </div>
+
+      <div class="cta-row" style="margin-top:12px;">
+        <a class="btn btn-ghost" href="automation.html">See automation</a>
+        <a class="btn btn-primary" href="members.html">Get member access</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / ANTI-GURU -->
+  <section class="split">
+    <div class="card">
+      <h3>Proof over performance theatre</h3>
+      <p class="quote">
+        “Screenshots are marketing. Journals are truth.”
+        <small>We focus on verified logs, not highlight reels.</small>
+      </p>
+      <div class="cta-row" style="margin-top:10px;">
+        <a class="btn btn-ghost" href="prove-it.html">Prove It page</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>The Guruometer</h3>
+      <p>
+        Independent reviews of trading influencers.
+        No partnerships. No affiliate bias. Just receipts.
+      </p>
+      <div class="cta-row" style="margin-top:10px;">
+        <a class="btn btn-ghost" href="guruometer.html">Browse gurus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="card" style="text-align:center;">
+      <h3 style="font-size:20px; margin-bottom:6px;">If you’re serious about trading, start here.</h3>
+      <p style="color:var(--muted); margin:0 0 12px;">
+        No hype. No fake certainty. Just disciplined execution and a community that keeps you honest.
+      </p>
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn btn-primary" href="join.html">Join the Resistance</a>
+        <a class="btn btn-ghost" href="https://instagram.com/unfundedresistance" target="_blank">Follow on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<section class="footer-cta">
+  <div class="wrap" style="display:flex; justify-content:space-between; gap:14px; align-items:center; flex-wrap:wrap;">
+    <div>
+      <h3 style="margin:.2em 0 .4em">Tired of breaking your own rules?</h3>
+      <p style="color:#bbb; margin:0">Members gain access to tools built to enforce discipline.</p>
+    </div>
+    <div>
+      <a class="btn btn-primary" href="automation.html">See the Tools</a>
+    </div>
+  </div>
+</section>
+
+<footer>
   <p>© 2025 Unfunded Resistance · All rights reserved</p>
-  <p style="margin-top:8px; font-size:14px;">
-    <a href="/terms-and-conditions.html" style="color:#4da3ff; text-decoration:none;">Terms</a> ·
-    <a href="/privacy.html" style="color:#4da3ff; text-decoration:none;">Privacy</a> ·
-    <a href="/refund.html" style="color:#4da3ff; text-decoration:none;">Refund</a>
+  <p style="margin-top:8px;">
+    <a href="/terms-and-conditions.html">Terms</a> ·
+    <a href="/privacy.html">Privacy</a> ·
+    <a href="/refund.html">Refund</a>
   </p>
 </footer>
 
