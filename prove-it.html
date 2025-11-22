@@ -52,95 +52,227 @@
     }
   }
   </script>
-</head>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BJ5QD8T2VJ');
+  </script>
 
-  gtag('config', 'G-BJ5QD8T2VJ');
-</script>
-<body>
   <style>
-  /* Base Styles */
-  nav {
-    background-color: #000;
-    padding: 15px 20px;
-    border-bottom: 1px solid #f33;
-    font-family: 'Courier New', monospace;
-    position: relative;
-  }
-
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu-toggle {
-    display: none;
-    font-size: 2em;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
-  }
-
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    color: #f33;
-    border-color: #f33;
-    background-color: #111;
-  }
-
-  /* Mobile Styles */
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
+    :root {
+      --bg: #050505;
+      --panel: #0e0e0e;
+      --panel-2: #121212;
+      --text: #e8e8e8;
+      --muted: #b9b9b9;
+      --accent: #ff3333;
+      --accent-soft: rgba(255, 51, 51, 0.12);
+      --blue: #6aa6ff;
+      --radius: 16px;
+      --maxw: 1000px;
     }
 
-    .nav-links {
-      display: none;
-      flex-direction: column;
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+    }
+
+    /* NAV */
+    nav {
       background-color: #000;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      border-top: 1px solid #f33;
-      z-index: 99;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--accent);
+      font-family: 'Courier New', monospace;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-
-    .nav-links.active {
+    .nav-container {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2em;
+      color: #fff;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 14px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.05em;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background-color: #111;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 60px; left: 0; width: 100%;
+        text-align: center;
+        border-top: 1px solid var(--accent);
+      }
+      .nav-links.active { display: flex; }
+      .nav-links a { border: none; padding: 14px; }
     }
 
-    .nav-links a {
-      border: none;
-      padding: 15px;
+    /* LAYOUT */
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 26px 18px 70px; }
+    section { margin-top: 22px; }
+
+    .hero {
+      background: radial-gradient(1100px circle at top left, var(--accent-soft), transparent 55%),
+                  var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: center;
     }
-  }
-</style>
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+
+    .hero-img {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #1d1d1d;
+      background: #0a0a0a;
+    }
+    .hero-img img { width: 100%; height: auto; display: block; }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: #0b0b0b;
+      border: 1px solid #1d1d1d;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .badge .dot {
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.1;
+      margin: 10px 0;
+      letter-spacing: -0.5px;
+    }
+    h2 { margin: 0 0 8px; font-size: 20px; }
+    .sub {
+      font-size: clamp(15px, 2.4vw, 18px);
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .btn {
+      display:inline-block; padding: 11px 18px; border-radius: 999px;
+      text-decoration:none; font-weight:800; border:1px solid #333;
+    }
+    .btn-primary { background: var(--accent); color:#000; border-color: var(--accent); }
+    .btn-ghost { background: transparent; color: var(--text); }
+    .btn-blue { background: var(--blue); color:#000; border-color: var(--blue); }
+
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 16px;
+      line-height: 1.6;
+    }
+    .card p, .card li { color: var(--muted); font-size: 15px; }
+
+    .step {
+      display:flex; align-items:flex-start; gap: 12px;
+      background: var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .step-num {
+      font-weight: 900;
+      font-size: 18px;
+      color: #000;
+      background: var(--accent);
+      border-radius: 10px;
+      padding: 6px 10px;
+      line-height: 1;
+      min-width: 38px;
+      text-align:center;
+    }
+    .step h3 { margin: 0 0 6px; font-size: 18px; }
+
+    ol, ul { padding-left: 18px; margin: 8px 0 0; }
+    li { margin: 6px 0; }
+
+    .tools-list li strong { color: var(--text); }
+
+    .divider {
+      border: none;
+      height: 1px;
+      background: #1e1e1e;
+      margin: 22px 0;
+    }
+
+    .callout {
+      background: var(--panel-2);
+      border: 1px dashed #333;
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    footer {
+      background:#0b0b0b;
+      color:#aaa;
+      text-align:center;
+      padding:20px;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+    footer a { color:#4da3ff; text-decoration:none; }
+    a { color: var(--blue); }
+  </style>
+</head>
+
+<body>
 
 <nav>
   <div class="nav-container">
@@ -163,84 +295,121 @@
 
 <script>
   function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('active');
   }
 </script>
-<style>
-    .container img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  display: block;
-  margin: 0 auto 2em auto;
-}
-  </style>
 
-  <div class="container">
-    <img src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/BA0FD0CD-CE1D-4A10-B391-A4B6DCD8208F.png" alt="Unfunded Resistance" />
-  <div class="container">
-    <section id="prove-it">
+<div class="wrap">
 
-      <h1></h1>
-      <p>
-        Tired of “mentors” who flex but never show a verified track record?<br>
-        <strong>Here’s how you can do what they won’t.</strong><br><br>
-        It’s free. It’s easy. So why aren’t they doing it?
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="badge"><span class="dot"></span> Evidence standard • Public verification</div>
+      <h1>Prove It</h1>
+      <p class="sub">
+        Trading claims without verification are just marketing.
+        This page is the Resistance standard for what counts as real:
+        receipts, public logs, and track records that can’t be edited after the fact.
       </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#steps">Show me how</a>
+        <a class="btn btn-ghost" href="guruometer.html">See the ratings</a>
+      </div>
+    </div>
 
-      <h2>Step 1: MyFXBook – The Industry Standard</h2>
-      <p><strong>What It Is:</strong><br>
-        A free, trusted platform that links directly to your trading account and tracks your stats in real time.
-      </p>
-      <ol>
-        <li>Go to <a href="https://www.myfxbook.com" target="_blank">myfxbook.com</a></li>
-        <li>Create an account</li>
-        <li>Link your MT4/MT5 or cTrader using their connection guide</li>
-        <li>Set it to <strong>public with broker verified & track record verified</strong></li>
-      </ol>
-      <p><em>Done. You’re transparent. They’re not.</em></p>
+    <div class="hero-img">
+      <img src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/BA0FD0CD-CE1D-4A10-B391-A4B6DCD8208F.png" alt="Prove It">
+    </div>
+  </header>
 
-      <h2>Step 2: Notion Trade Journal – Built for Survivors</h2>
-      <p><strong>What It Is:</strong><br>
-        A clean, customizable workspace to log your trades, emotions, screenshots, and mistakes.
-      </p>
-      <ol>
-        <li>Go to <a href="https://www.notion.so" target="_blank">notion.so</a></li>
-        <li>Create a free account</li>
-        <li>Use our free template <em>(coming soon)</em></li>
-        <li>Log trades with notes, screenshots, and key lessons</li>
-      </ol>
-      <p><em>This is how real traders improve. Not by “signals.”</em></p>
+  <!-- INTRO -->
+  <section class="card">
+    <p style="margin-top:0;">
+      If someone is profitable, proving it is easy.  
+      If they won’t prove it, you already know why.
+    </p>
+    <p>
+      Here are two free ways to make your trading verifiable — the same thing most “mentors”
+      mysteriously never get around to doing.
+    </p>
+  </section>
 
-      <h2>Bonus Tools:</h2>
-      <ul>
-        <li><strong>FxBlue</strong> – Like MyFXBook, more detailed analytics</li>
-        <li><strong>Google Sheets</strong> – For fully custom manual tracking</li>
-        <li><strong>TraderVue / TradeSync</strong> – Premium journaling tools</li>
-        <li><strong>OBS + YouTube (Unlisted)</strong> – Screen record your trades</li>
-      </ul>
+  <!-- STEPS -->
+  <section id="steps" class="grid-2">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h3>MyFXBook — the industry standard</h3>
+        <p><strong>What it is:</strong> a free platform that connects directly to your account and tracks stats live.</p>
+        <ol>
+          <li>Go to <a href="https://www.myfxbook.com" target="_blank" rel="noopener">myfxbook.com</a></li>
+          <li>Create a free account</li>
+          <li>Link MT4/MT5/cTrader using their guide</li>
+          <li>Set to <strong>Public + Broker Verified + Track Record Verified</strong></li>
+        </ol>
+        <p><em>Done. Anyone can verify you. No screenshots needed.</em></p>
+      </div>
+    </div>
 
-      <hr>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Notion trade journal — built for survivors</h3>
+        <p><strong>What it is:</strong> a clean workspace to log trades, mistakes, emotions, and lessons.</p>
+        <ol>
+          <li>Go to <a href="https://www.notion.so" target="_blank" rel="noopener">notion.so</a></li>
+          <li>Create a free account</li>
+          <li>Use our free template <em>(coming soon)</em></li>
+          <li>Log every trade with reasoning & review</li>
+        </ol>
+        <p><em>This is how real improvement happens. Not by buying signals.</em></p>
+      </div>
+    </div>
+  </section>
 
-      <h2>Ask Yourself:</h2>
-      <p>
-        If this takes 10 minutes...<br>
-        Costs nothing...<br>
-        And proves you’re real...<br><br>
-        <strong>Why isn’t your favorite guru doing it?</strong>
-      </p>
+  <!-- BONUS TOOLS -->
+  <section class="card">
+    <h2>Bonus verification tools</h2>
+    <ul class="tools-list">
+      <li><strong>FxBlue</strong> — similar to MyFXBook, deeper analytics.</li>
+      <li><strong>Google Sheets</strong> — manual journaling your way.</li>
+      <li><strong>TraderVue / TradeSync</strong> — premium journaling suites.</li>
+      <li><strong>OBS + YouTube (Unlisted)</strong> — screen-record sessions for integrity.</li>
+    </ul>
+  </section>
 
-      <p><em>Exactly.</em></p>
-<a href="join.html" style="padding: 12px 24px; background-color: #66f; color: #000; font-weight: bold; text-decoration: none; border-radius: 4px; display: inline-block;">
-      JOIN THE RESISTANCE
-    </a>
-    </section>
-  </div>
+  <hr class="divider">
 
-  <footer>
-    <hr style="margin: 2em auto; border-color: #444;">
-    <p>&copy; 2025 Unfunded Resistance. Built from scratch. No fluff. No filters.</p>
-  </footer>
+  <!-- CALL OUT -->
+  <section class="callout">
+    <h2>Ask yourself</h2>
+    <p class="sub" style="margin:0;">
+      If proving profitability takes 10 minutes, costs nothing, and shuts down doubt forever…  
+      why isn’t your favourite guru doing it?
+    </p>
+    <p style="margin:.8em 0 0;"><em>Exactly.</em></p>
+  </section>
+
+  <!-- CTA -->
+  <section class="card" style="text-align:center;">
+    <h2>Ready to trade in reality?</h2>
+    <p class="sub">Join the Resistance. Build proof. Stop following theatre.</p>
+    <div class="cta-row" style="justify-content:center;">
+      <a class="btn btn-primary" href="join.html">Join the Resistance</a>
+      <a class="btn btn-blue" href="automation.html">See the tools</a>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <p>© 2025 Unfunded Resistance · All rights reserved</p>
+  <p style="margin-top:8px;">
+    <a href="/terms-and-conditions.html">Terms</a> ·
+    <a href="/privacy.html">Privacy</a> ·
+    <a href="/refund.html">Refund</a>
+  </p>
+</footer>
+
 </body>
 </html>
