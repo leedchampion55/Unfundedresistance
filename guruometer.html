@@ -63,274 +63,106 @@
   </script>
 
   <style>
-    :root {
-      --bg: #050505;
-      --panel: #0e0e0e;
-      --panel-2: #121212;
-      --text: #e8e8e8;
-      --muted: #b9b9b9;
-      --accent: #ff3333;
-      --accent-soft: rgba(255, 51, 51, 0.12);
-      --blue: #6aa6ff;
-      --radius: 16px;
-      --maxw: 1100px;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-    }
-
-    /* NAV */
+    /* Base Styles */
     nav {
       background-color: #000;
       padding: 15px 20px;
-      border-bottom: 1px solid var(--accent);
+      border-bottom: 1px solid #f33;
       font-family: 'Courier New', monospace;
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      position: relative;
     }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: var(--maxw);
-      margin: 0 auto;
-    }
-    .menu-toggle {
-      display: none;
-      font-size: 2em;
-      color: #fff;
-      cursor: pointer;
-    }
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 14px;
-    }
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.05em;
-      padding: 8px 10px;
-      border: 1px solid transparent;
-      transition: all 0.25s ease;
-    }
-    .nav-links a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-      background-color: #111;
-    }
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #000;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        border-top: 1px solid var(--accent);
+    .nav-container { display:flex; justify-content:space-between; align-items:center; }
+    .menu-toggle { display:none; font-size:2em; color:#fff; cursor:pointer; }
+    .nav-links { display:flex; flex-wrap:wrap; justify-content:center; list-style:none; margin:0; padding:0; gap:20px; }
+    .nav-links a { color:#fff; text-decoration:none; font-size:1.1em; padding:10px 15px; border:1px solid transparent; transition:all .3s ease; }
+    .nav-links a:hover { color:#f33; border-color:#f33; background-color:#111; }
+    @media (max-width:768px){
+      .menu-toggle{ display:block; }
+      .nav-links{
+        display:none; flex-direction:column; background:#000; position:absolute; top:60px; left:0; width:100%;
+        text-align:center; border-top:1px solid #f33; z-index:99;
       }
-      .nav-links.active { display: flex; }
-      .nav-links a { border: none; padding: 14px; }
+      .nav-links.active{ display:flex; }
+      .nav-links a{ border:none; padding:15px; }
     }
 
-    /* LAYOUT */
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 26px 18px 70px; }
-    section { margin-top: 22px; }
+    /* Buttons / misc */
+    .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .btn { display:inline-block; padding:10px 16px; border-radius:999px; text-decoration:none; font-weight:700; border:1px solid #333; }
+    .btn-primary { background:#f33; color:#000; border-color:#f33; }
+    .btn-ghost { background:transparent; color:#eee; }
 
-    .hero {
-      background: radial-gradient(1200px circle at top left, var(--accent-soft), transparent 55%),
-                  var(--panel);
-      border: 1px solid #1b1b1b;
-      border-radius: var(--radius);
-      padding: 22px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 16px;
-      align-items: center;
-    }
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+    /* Page-specific */
+    body { background:#000; color:#fff; font-family:'Courier New', monospace; }
 
-    .hero-img {
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #1d1d1d;
-      background: #0a0a0a;
-    }
-    .hero-img img { width: 100%; height: auto; display: block; }
+    .controls { display:flex; flex-wrap:wrap; gap:10px; margin: 0 auto 20px; max-width: 1100px; padding: 0 16px; }
+    select, input[type="text"] { padding:6px; font-size:1em; border-radius:4px; border:none; }
 
-    .badge {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      background: #0b0b0b;
-      border: 1px solid #1d1d1d;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .badge .dot {
-      width: 8px; height: 8px; border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 12px var(--accent);
-    }
-
-    h1 {
-      font-size: clamp(28px, 4.5vw, 42px);
-      line-height: 1.1;
-      margin: 10px 0;
-      letter-spacing: -0.5px;
-    }
-    .sub {
-      font-size: clamp(15px, 2.4vw, 18px);
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
-    .btn {
-      display:inline-block; padding: 11px 18px; border-radius: 999px;
-      text-decoration:none; font-weight:800; border:1px solid #333;
-    }
-    .btn-primary { background: var(--accent); color:#000; border-color: var(--accent); }
-    .btn-ghost { background: transparent; color: var(--text); }
-    .btn-blue { background: var(--blue); color:#000; border-color: var(--blue); }
-
-    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid #1b1b1b;
-      border-radius: var(--radius);
-      padding: 16px;
-      line-height: 1.55;
-    }
-    .card p, .card li { color: var(--muted); font-size: 15px; }
-
-    /* COUNT BAND */
-    .count-band {
-      background: var(--panel);
-      border: 1px solid #1b1b1b;
-      border-radius: var(--radius);
-      padding: 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    #guru-count {
-      font-size: clamp(40px, 6vw, 56px);
-      font-weight: 900;
-      color: var(--blue);
-      letter-spacing: 1px;
-    }
-
-    /* CONTROLS */
-    .controls-wrap {
-      background: var(--panel);
-      border: 1px solid #1b1b1b;
-      border-radius: var(--radius);
-      padding: 14px;
-      display: grid;
-      gap: 10px;
-    }
-    .controls {
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:center;
-    }
-    select, input[type="text"] {
-      padding: 10px 10px;
-      font-size: 0.98em;
-      border-radius: 10px;
-      border: 1px solid #222;
-      background: #0a0a0a;
-      color: #eee;
-      outline: none;
-      min-width: 160px;
-    }
-    input[type="text"] { flex: 1; min-width: 220px; }
-
-    /* TOP LISTS */
-    #topLists {
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-    .top-panel {
-      flex: 1;
-      min-width: 280px;
-      background: var(--panel);
-      border: 1px solid #1b1b1b;
-      border-radius: var(--radius);
-      padding: 14px;
-    }
-    .top-panel h2 { margin-top: 0; font-size: 18px; }
-    .top-panel .candles { transform: translateY(1px); }
-
-    /* GURU LIST SECTIONS */
-    .section-head {
-      display:flex; align-items:center; justify-content:space-between;
-      flex-wrap:wrap; gap: 8px; margin-bottom: 6px;
-    }
-    .section-head h2 { margin: 0; font-size: 20px; }
-    .section-head p { margin:0; color: var(--muted); font-size: 14px; }
-
-    #guruContainer, #highlyAvoidContainer {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    /* LIGHT OVERRIDES so Gurus.html cards "fit" the new theme */
-    .guru-card {
-      background: var(--panel) !important;
-      border: 1px solid #1b1b1b !important;
-      border-radius: var(--radius) !important;
-      max-width: 100% !important;
-      margin: 0 !important;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
-    }
-    .guru-tagline, .rating-item, .verdict, .full-verdict { color: var(--muted) !important; }
-    .toggle-btn {
-      color: #ffd166 !important;
-      border-color: #333 !important;
-      border-radius: 10px !important;
-      font-weight: 700 !important;
-    }
-
-    /* Candles for top lists + any .candles blocks */
-    .candles { display:flex; gap:4px; margin:0; }
+    .candles { display:flex; gap:4px; margin:10px 0; }
     .candle { width:16px; height:28px; border:2px solid #333; background:#000; transition:background .3s, opacity .3s; }
     .candle.green { background:#0f0; }
     .candle.red { background:#f00; }
     .candle.partial { animation:none; }
 
-    footer {
-      background:#0b0b0b;
-      color:#aaa;
-      text-align:center;
-      padding:20px;
-      font-size: 14px;
-      margin-top: 30px;
+    #topLists {
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;
+      margin: 0 auto 30px; max-width: 1100px; padding: 0 16px;
     }
-    footer a { color:#4da3ff; text-decoration:none; }
+    @media (max-width:768px){ #topLists { flex-direction:column; } }
+
+    /* ✅ FIX: responsive grid for cards */
+    #guruContainer,
+    #highlyAvoidContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px 30px;
+    }
+
+    /* ✅ FIX: cards fill grid cells (no auto-centering / random widths) */
+    .guru-card {
+      background:#1a1a1a;
+      border-radius:8px;
+      padding:20px;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .guru-header.vertical .guru-name {
+      font-size:1.2em; font-weight:bold; margin-bottom:8px; word-break:break-word; width:100%; text-align:left;
+    }
+    .guru-header.vertical .top-row { display:flex; align-items:center; gap:20px; }
+    .guru-photo img {
+      width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid #444;
+      flex: 0 0 auto;
+    }
+    .guru-info { flex-grow:1; min-width: 0; }
+    .guru-tagline { font-size:.95em; color:#aaa; }
+
+    .ratings { display:grid; grid-template-columns:repeat(2, 1fr); gap:10px; margin-top:15px; }
+    .rating-item { background:#2a2a2a; border-radius:6px; padding:10px; font-size:.95em; }
+
+    .candlestick-rating { display:flex; gap:4px; margin-top:4px; }
+
+    .verdict { margin-top:20px; font-size:.95em; }
+    .full-verdict { display:none; margin-top:10px; }
+    .toggle-btn {
+      margin-top:10px; background:none; border:1px solid #444; padding:6px 12px; color:#f4b400;
+      cursor:pointer; border-radius:4px;
+    }
+
+    .overall-row { display:flex; align-items:center; gap:10px; margin-top:10px; }
+    .overall-score { font-size:1.5em; font-weight:bold; color:#fff; white-space:nowrap; }
+
+    /* Container image */
+    .container img {
+      width:100%; height:auto; max-width:100%; display:block; margin:0 auto 2em auto;
+    }
   </style>
 </head>
 <body>
@@ -361,147 +193,133 @@
   }
 </script>
 
-<div class="wrap">
+<div class="container">
+  <img src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/60A6247D-1FDA-45E4-BC5B-07F6F35AC554.png" alt="Unfunded Resistance" />
+</div>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div>
-      <div class="badge"><span class="dot"></span> Public database • Independent scoring</div>
-      <h1>Guruometer</h1>
-      <p class="sub">
-        The trading space is full of loud claims and soft evidence.
-        Guruometer exists to separate credibility from cosplay by rating influencers on
-        proof, transparency, risk behaviour, and business model incentives.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#all">Browse reviews</a>
-        <a class="btn btn-ghost" href="#avoid">Highly avoid</a>
-        <a class="btn btn-blue" href="prove-it.html">Prove It</a>
+<section id="guruometer" style="margin-bottom: 40px;">
+  <div style="max-width: 900px; margin: auto; text-align: center;">
+    <h1 style="font-size: 42px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;"></h1>
+    <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+      Tired of fake mentors and “10X” hype?<br><strong>So are we.</strong>
+    </p>
+    <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+      The Guruometer is our public database of a few real deals but mostly clowns, frauds, and overhyped “mentors” who are polluting the trading space with lies, screenshots, and Lamborghini delusions.
+    </p>
+    <p style="font-size: 18px; line-height: 1.6; font-weight: bold; margin-bottom: 40px;">
+      We don’t just call them out, we rate them.
+    </p>
+
+    <section id="truth-checklist" style="padding: 0px 20px; background-color: #000; color: #f5f5f5; font-family: 'Courier New', monospace;">
+      <div style="max-width: 1000px; margin: auto; text-align: center;">
+        <h1 style="font-size: 36px; margin-bottom: 0px; text-transform: uppercase; letter-spacing: 1.5px;"></h1>
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+          <div style="flex: 1; min-width: 280px; max-width: 460px; background: #111; padding: 25px; border: 1px solid #333; border-radius: 6px;">
+            <h2 style="color: #66f; font-size: 22px; margin-bottom: 20px;">✅ What Real Successful Traders DO</h2>
+            <ul style="text-align: left; list-style-position: inside; line-height: 1.8; font-size: 16px;">
+              <li>• Trade in private – no livestream flex</li>
+              <li>• Show long-term verified results (MyFXBook, broker statements)</li>
+              <li>• Respect risk – usually 1% per trade</li>
+              <li>• Backtest and forward-test their edge</li>
+              <li>• Stay humble – no ego in the market</li>
+              <li>• Teach with clarity, not mystery</li>
+              <li>• Focus on process, not followers</li>
+              <li>• Lose and own it – red days are normal</li>
+            </ul>
+          </div>
+          <div style="flex: 1; min-width: 280px; max-width: 460px; background: #111; padding: 25px; border: 1px solid #333; border-radius: 6px;">
+            <h2 style="color: #f55; font-size: 22px; margin-bottom: 20px;">❌ What Instagram Gurus WON’T Do</h2>
+            <ul style="text-align: left; list-style-position: inside; line-height: 1.8; font-size: 16px;">
+              <li>• Show full broker statements or MyFXBook links</li>
+              <li>• Post consistent losing trades or drawdowns</li>
+              <li>• Risk under 5% – hype feeds on big wins</li>
+              <li>• Explain trades with logic – only buzzwords</li>
+              <li>• Admit their income is from followers, not trading</li>
+              <li>• Prove withdrawals – always “forgot” the screenshot</li>
+              <li>• Stick to one strategy – constant rebranding</li>
+              <li>• Say “I was wrong” – they just delete or pivot</li>
+              <li>• Last longer than 18 months – most vanish</li>
+              <li>• Offer real value for free – everything’s a funnel</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="hero-img">
-      <img src="https://raw.githubusercontent.com/leedchampion55/Unfundedresistance/refs/heads/main/60A6247D-1FDA-45E4-BC5B-07F6F35AC554.png" alt="Guruometer">
-    </div>
-  </header>
+    <h2 style="font-size: 28px; margin-bottom: 20px;">Here’s how it works…</h2>
+    <ul style="line-height: 1.8; display: inline-block; text-align: left; margin: 0 auto 40px auto;">
+      <li><strong>Lambo Level</strong> – How hard are they flexing lifestyle over results?</li>
+      <li><strong>Proof of Trading</strong> – Do they show real, verified trades or just cherry-picked wins?</li>
+      <li><strong>Course Clownery</strong> – Are they selling overpriced mentorships, bootcamps, or “signals”?</li>
+      <li><strong>Community Cult Score</strong> – Do they create dependency or actual skill?</li>
+      <li><strong>Transparency Factor</strong> – Is anything they say verifiable?</li>
+    </ul>
+    <p style="font-size: 18px; line-height: 1.6;">
+      Each one gets a brutal, no-BS rating from the Resistance.<br>
+      <strong>We don’t care about feelings. We care about truth.</strong>
+    </p>
+  </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="grid-2">
-    <div class="card">
-      <h3>What we measure</h3>
-      <ul>
-        <li><strong>Lambo Level</strong> — lifestyle flex vs. trading substance.</li>
-        <li><strong>Proof of Trading</strong> — verified results or highlight theatre.</li>
-        <li><strong>Course Clownery</strong> — funnel intensity, pricing, and value.</li>
-        <li><strong>Community Cult Score</strong> — dependency vs. skill-building.</li>
-        <li><strong>Transparency</strong> — are claims measurable and consistent?</li>
-      </ul>
-      <p>
-        The result is a simple overall score that tells you who’s worth learning from,
-        and who’s selling a dream.
-      </p>
-    </div>
+<section style="background-color: #111; padding: 60px 20px; color: #f5f5f5; text-align: center; font-family: 'Courier New', monospace;">
+  <h2 style="font-size: 32px; margin-bottom: 10px;">Total Gurus Rated</h2>
+  <div id="guru-count" style="font-size: 64px; font-weight: bold; color: #66f; letter-spacing: 2px; margin-bottom: 10px;">0</div>
+  <p style="font-size: 16px; color: #aaa;">And counting. New reviews added weekly.</p>
+</section>
 
-    <div class="card">
-      <h3>Why it matters</h3>
-      <p>
-        Most traders don’t fail because they lack information.
-        They fail because they follow the wrong incentives.
-      </p>
-      <p>
-        If someone makes more money from followers than trading,
-        their content will always skew toward hype.
-      </p>
-      <p>
-        Guruometer makes those incentives visible.
-      </p>
-    </div>
-  </section>
+<div class="controls">
+  <select id="sort">
+    <option value="desc">Sort: High to Low</option>
+    <option value="asc">Sort: Low to High</option>
+  </select>
+  <select id="bsFilter">
+    <option value="">Filter: Any BS</option>
+    <option value="1">BS Meter ≥ 1</option>
+    <option value="2">BS Meter ≥ 2</option>
+    <option value="3">BS Meter ≥ 3</option>
+    <option value="4">BS Meter ≥ 4</option>
+    <option value="5">BS Meter = 5</option>
+  </select>
+  <select id="ratingFilter">
+    <option value="">Filter: Any Rating</option>
+    <option value="4.5">Rating ≥ 4.5</option>
+    <option value="4.0">Rating ≥ 4.0</option>
+    <option value="3.5">Rating ≥ 3.5</option>
+    <option value="3.0">Rating ≥ 3.0</option>
+    <option value="2.5">Rating ≥ 2.5</option>
+  </select>
+  <input type="text" id="searchInput" placeholder="Search by name" />
+</div>
 
-  <!-- COUNT -->
-  <section class="count-band">
-    <div>
-      <h3 style="margin:0;">Total gurus rated</h3>
-      <p style="margin:.3em 0 0;color:var(--muted);font-size:14px;">New reviews drop regularly.</p>
-    </div>
-    <div id="guru-count">0</div>
-  </section>
+<div id="topLists">
+  <div>
+    <h2>Top 5 Highest Rated</h2>
+    <div id="topRatedList"></div>
+  </div>
+  <div>
+    <h2>Top 5 Lowest Rated</h2>
+    <div id="worstRatedList"></div>
+  </div>
+</div>
 
-  <!-- CONTROLS -->
-  <section class="controls-wrap">
-    <div class="section-head">
-      <h2>Filter & sort</h2>
-      <p>Search by name, BS level, or overall score.</p>
-    </div>
+<section id="guruometer">
+  <h2 style="max-width:1100px;margin:0 auto 10px;padding:0 16px;">All Guru Reviews</h2>
+  <div id="guruContainer"></div>
+</section>
 
-    <div class="controls">
-      <select id="sort">
-        <option value="desc">Sort: High to Low</option>
-        <option value="asc">Sort: Low to High</option>
-      </select>
-
-      <select id="bsFilter">
-        <option value="">Filter: Any BS</option>
-        <option value="1">BS Meter ≥ 1</option>
-        <option value="2">BS Meter ≥ 2</option>
-        <option value="3">BS Meter ≥ 3</option>
-        <option value="4">BS Meter ≥ 4</option>
-        <option value="5">BS Meter = 5</option>
-      </select>
-
-      <select id="ratingFilter">
-        <option value="">Filter: Any Rating</option>
-        <option value="4.5">Rating ≥ 4.5</option>
-        <option value="4.0">Rating ≥ 4.0</option>
-        <option value="3.5">Rating ≥ 3.5</option>
-        <option value="3.0">Rating ≥ 3.0</option>
-        <option value="2.5">Rating ≥ 2.5</option>
-      </select>
-
-      <input type="text" id="searchInput" placeholder="Search by name..." />
-    </div>
-  </section>
-
-  <!-- TOP LISTS -->
-  <section id="topLists">
-    <div class="top-panel">
-      <h2>Top 5 highest rated</h2>
-      <div id="topRatedList"></div>
-    </div>
-
-    <div class="top-panel">
-      <h2>Top 5 lowest rated</h2>
-      <div id="worstRatedList"></div>
-    </div>
-  </section>
-
-  <!-- ALL REVIEWS -->
-  <section id="all">
-    <div class="section-head">
-      <h2>All guru reviews</h2>
-      <p>Independent ratings from public data.</p>
-    </div>
-    <div id="guruContainer"></div>
-  </section>
-
-  <!-- HIGHLY AVOID -->
-  <section id="avoid">
-    <div class="section-head">
-      <h2>Highly avoid</h2>
-      <p>Repeated scam signals, refusal of proof, or high deception patterns.</p>
-    </div>
-    <div id="highlyAvoidContainer"></div>
-  </section>
-
-</div><!-- /wrap -->
+<section id="highly-avoid">
+  <h2 style="max-width:1100px;margin:30px auto 10px;padding:0 16px;">🚫 Highly Avoid (Confirmed Scam Signals)</h2>
+  <p style="max-width:1100px;margin:0 auto 15px;padding:0 16px;color:#bbb;">
+    These highlighted accounts have blocked us after requesting verified proof or have shown patterns of deceptive marketing, refusal to provide transparency, or high BS scores.
+  </p>
+  <div id="highlyAvoidContainer"></div>
+</section>
 
 <script>
-  // Wait for everything to finish loading (including dynamic content)
   window.addEventListener("load", function () {
     setTimeout(() => {
       const guruCount = document.querySelectorAll(".guru-card").length;
-      const countEl = document.getElementById("guru-count");
-      if (countEl) countEl.textContent = guruCount;
+      document.getElementById("guru-count").textContent = guruCount;
     }, 500);
   });
 
@@ -527,13 +345,13 @@
 
       const scoreText = document.createElement("div");
       scoreText.textContent = score;
-      scoreText.style.fontWeight = "800";
-      scoreText.style.minWidth = "36px";
+      scoreText.style.fontWeight = "bold";
+      scoreText.style.minWidth = "30px";
 
       const nameText = document.createElement("div");
       nameText.textContent = name;
       nameText.style.flex = "1";
-      nameText.style.fontSize = "0.95em";
+      nameText.style.fontSize = "0.9em";
 
       const candles = document.createElement("div");
       candles.classList.add("candles");
@@ -662,21 +480,11 @@
   document.getElementById("bsFilter").addEventListener("change", filterCards);
   document.getElementById("searchInput").addEventListener("input", filterCards);
   document.getElementById("ratingFilter").addEventListener("change", filterCards);
-
-  function moveHighlyAvoidCards() {
-    const avoidContainer = document.getElementById("highlyAvoidContainer");
-    const cards = document.querySelectorAll(".guru-card.highly-avoid");
-    cards.forEach(card => { avoidContainer.appendChild(card); });
-  }
 </script>
 
 <footer>
-  <p>© 2025 Unfunded Resistance · All rights reserved</p>
-  <p style="margin-top:8px;">
-    <a href="/terms-and-conditions.html">Terms</a> ·
-    <a href="/privacy.html">Privacy</a> ·
-    <a href="/refund.html">Refund</a>
-  </p>
+  <hr style="margin: 2em auto; border-color: #444;" />
+  <p>&copy; 2025 Unfunded Resistance. Built from scratch. No fluff. No filters.</p>
 </footer>
 
 </body>
