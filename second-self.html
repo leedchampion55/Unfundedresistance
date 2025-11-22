@@ -52,133 +52,223 @@
     }
   }
   </script>
-</head>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BJ5QD8T2VJ');
+  </script>
 
-  gtag('config', 'G-BJ5QD8T2VJ');
-</script>
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #0e0e0e;
+      --panel-2: #121212;
+      --text: #e8e8e8;
+      --muted: #b9b9b9;
+      --accent: #ff3333;
+      --accent-soft: rgba(255, 51, 51, 0.12);
+      --blue: #6aa6ff;
+      --radius: 16px;
+      --maxw: 1100px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+    }
+
+    /* NAV (consistent with new site) */
+    nav {
+      background-color: #000;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--accent);
+      font-family: 'Courier New', monospace;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2em;
+      color: #fff;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 14px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.05em;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background-color: #111;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid var(--accent);
+      }
+      .nav-links.active { display: flex; }
+      .nav-links a { border: none; padding: 14px; }
+    }
+
+    /* LAYOUT */
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 28px 18px 70px; }
+    section { margin-top: 26px; }
+
+    .hero {
+      background: radial-gradient(1200px circle at top left, var(--accent-soft), transparent 52%),
+                  var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: #0b0b0b;
+      border: 1px solid #1d1d1d;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .badge .dot {
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.1;
+      margin: 10px 0;
+      letter-spacing: -0.5px;
+    }
+    .sub {
+      font-size: clamp(15px, 2.4vw, 18px);
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .btn {
+      display:inline-block;
+      padding: 11px 18px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid #333;
+    }
+    .btn-primary { background: var(--accent); color:#000; border-color: var(--accent); }
+    .btn-ghost { background: transparent; color: var(--text); }
+    .btn-blue { background: var(--blue); color:#000; border-color: var(--blue); }
+
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 16px;
+      line-height: 1.55;
+    }
+    .card h2, .card h3 { margin: 0 0 6px; }
+    .card p, .card li { color: var(--muted); font-size: 15px; }
+
+    .list {
+      display:grid; gap: 8px; margin-top: 8px; color: var(--muted);
+      font-size: 15px;
+    }
+    .list .item {
+      display:flex; gap:8px; align-items:flex-start;
+      background: var(--panel-2);
+      border:1px solid #1c1c1c;
+      padding: 10px 12px;
+      border-radius: 12px;
+    }
+    .tick {
+      width: 18px; height: 18px; border-radius: 5px; background: var(--accent);
+      display:grid; place-items:center; color:#000; font-weight:900; font-size:12px; flex:0 0 auto; margin-top:2px;
+    }
+    .cross {
+      width: 18px; height: 18px; border-radius: 5px; background: #333;
+      display:grid; place-items:center; color:#eee; font-weight:900; font-size:12px; flex:0 0 auto; margin-top:2px;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 14px 16px;
+      background: #0b0b0b;
+      border: 1px solid #1b1b1b;
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      color: #d9d9d9;
+      line-height: 1.7;
+    }
+
+    .footer-cta {
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.03)),
+                  var(--panel);
+      border-top: 1px solid #1d1d1d;
+      padding: 26px 18px;
+      margin-top: 38px;
+    }
+    footer {
+      background:#0b0b0b;
+      color:#aaa;
+      text-align:center;
+      padding:20px;
+      font-size: 14px;
+    }
+    footer a { color:#4da3ff; text-decoration:none; }
+  </style>
+</head>
+
 <body>
 
-<!-- 🔧 NAV STYLES -->
-<style>
-  nav {
-    background-color: #000;
-    padding: 15px 20px;
-    border-bottom: 1px solid #f33;
-    font-family: 'Courier New', monospace;
-    position: relative;
-  }
-
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu-toggle {
-    display: none;
-    font-size: 2em;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
-  }
-
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    color: #f33;
-    border-color: #f33;
-    background-color: #111;
-  }
-
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
-    }
-
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background-color: #000;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      border-top: 1px solid #f33;
-      z-index: 99;
-    }
-
-    .nav-links.active {
-      display: flex;
-    }
-
-    .nav-links a {
-      border: none;
-      padding: 15px;
-    }
-  }
-
-  .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-    font-family: Arial, sans-serif;
-    color: #fff;
-  }
-
-  .container h1, .container h2, .container h3 {
-    color: #f33;
-    margin-top: 2em;
-  }
-
-  .container a.button {
-    padding: 12px 24px;
-    background-color: #66f;
-    color: #000;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 4px;
-    display: inline-block;
-    margin-top: 2em;
-  }
-
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 0.9em;
-    color: #777;
-  }
-
-  footer hr {
-    margin: 2em auto;
-    border-color: #444;
-  }
-</style>
-
-<!-- 🔧 NAV HTML -->
 <nav>
   <div class="nav-container">
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -205,43 +295,144 @@
   }
 </script>
 
-<!-- ✅ SECOND SELF CONTENT -->
-<div class="container">
-  <h1>The Second Self</h1>
-  <p>There are two versions of you trading your account and one of them is sabotaging everything.</p>
+<div class="wrap">
 
-  <h2>Self One: The Strategist</h2>
-  <ul>
-    <li>Builds a system</li>
-    <li>Understands risk</li>
-    <li>Wants to improve</li>
-    <li>Reads books, sets rules, writes goals</li>
-    <li>Thinks weekends are for planning</li>
-  </ul>
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="badge"><span class="dot"></span> Trader psychology • Execution control</div>
+      <h1>The Second Self</h1>
+      <p class="sub">
+        There are two versions of you trading your account.
+        One builds the plan. The other touches the account when pressure hits.
+        Most traders never learn to separate them — and that’s why they keep sabotaging themselves.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="built-to-survive.html">Read Built to Survive</a>
+        <a class="btn btn-ghost" href="cup.html">Join the Cup</a>
+        <a class="btn btn-blue" href="prove-it.html">Prove It</a>
+      </div>
+    </div>
 
-  <h2>Self Two: The Executor</h2>
-  <ul>
-    <li>Ignores the system</li>
-    <li>Chases losses</li>
-    <li>Trades out of boredom, anger, or FOMO</li>
-    <li>Breaks rules and blames the market</li>
-    <li>Thinks today is “the day it all turns around”</li>
-  </ul>
+    <div class="card">
+      <h3 style="margin-bottom:6px;">The whole game in one line</h3>
+      <blockquote>
+        Your strategy isn’t failing.
+        <br><strong>Your execution identity is.</strong>
+      </blockquote>
+      <p style="color:var(--muted); margin-top:8px;">
+        The Second Self framework is how we close that gap.
+      </p>
+    </div>
+  </header>
 
-  <h3>The Brutal Truth</h3>
-  <p><strong>Self One isn’t the problem.</strong> He knows what to do.<br>
-  <strong>Self Two is the one touching your account.</strong> He needs retraining.</p>
+  <!-- TWO SELVES -->
+  <section class="grid-2">
+    <div class="card">
+      <h2>Self One: The Strategist</h2>
+      <div class="list">
+        <div class="item"><div class="tick">✓</div><div>Builds a system and understands risk.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Writes rules, journals, and plans sessions.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Wants long-term improvement.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Knows exactly what not to do.</div></div>
+      </div>
+      <p style="margin-top:8px;">
+        This version of you usually shows up on weekends.
+      </p>
+    </div>
 
-  <p>You don’t need a better strategy. You need to survive yourself.<br>
-  <em>Built to Survive</em> exists to help you do exactly that.</p>
+    <div class="card">
+      <h2>Self Two: The Executor</h2>
+      <div class="list">
+        <div class="item"><div class="cross">✕</div><div>Chases losses, FOMO, and boredom trades.</div></div>
+        <div class="item"><div class="cross">✕</div><div>Breaks risk rules when the market bites back.</div></div>
+        <div class="item"><div class="cross">✕</div><div>Needs action to feel in control.</div></div>
+        <div class="item"><div class="cross">✕</div><div>Believes “today is the day it turns around.”</div></div>
+      </div>
+      <p style="margin-top:8px;">
+        This version of you shows up when money is on the line.
+      </p>
+    </div>
+  </section>
 
-  <a href="built-to-survive.html" class="button">Find out more</a>
-</div>
+  <!-- BRUTAL TRUTH -->
+  <section class="card">
+    <h2>The brutal truth</h2>
+    <p>
+      <strong>Self One isn’t the problem.</strong> He already knows what to do.
+      The issue is that <strong>Self Two is the one executing your trades.</strong>
+    </p>
+    <p>
+      If you don’t retrain the Executor, you will keep re-living the same cycle:
+      plan → execute well → feel something → interfere → regret → repeat.
+    </p>
+  </section>
 
-<!-- ✅ FOOTER -->
+  <!-- HOW WE FIX IT -->
+  <section class="grid-2">
+    <div class="card">
+      <h3>What “retraining” actually means</h3>
+      <p>
+        Not motivation. Not willpower. <strong>Structure.</strong>
+        You don’t defeat Self Two by trying harder.
+        You defeat him by removing his access to decisions.
+      </p>
+
+      <div class="list">
+        <div class="item"><div class="tick">✓</div><div>Pre-defined “if/then” rules.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Battle drills for your worst habits.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Journaling that exposes your loops.</div></div>
+        <div class="item"><div class="tick">✓</div><div>Automation guardrails where needed.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Where to start</h3>
+      <p>
+        The full framework is laid out in <strong>Built to Survive</strong>.
+        It’s the manual for turning “good intentions” into repeatable execution.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="built-to-survive.html">Open the manual</a>
+        <a class="btn btn-ghost" href="automation.html">Automation tools</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="card" style="text-align:center;">
+    <h3 style="font-size:20px; margin-bottom:6px;">You don’t need a new strategy.</h3>
+    <p style="color:var(--muted); margin:0 0 12px;">
+      You need a new execution identity.
+      Build it, prove it, and make it boring.
+    </p>
+    <div class="cta-row" style="justify-content:center;">
+      <a class="btn btn-primary" href="cup.html">Consistency Cup</a>
+      <a class="btn btn-ghost" href="prove-it.html">Prove It</a>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<section class="footer-cta">
+  <div class="wrap" style="display:flex; justify-content:space-between; gap:14px; align-items:center; flex-wrap:wrap;">
+    <div>
+      <h3 style="margin:.2em 0 .4em">Discipline isn’t personality. It’s design.</h3>
+      <p style="color:#bbb; margin:0">Build the environment that makes sabotage harder than consistency.</p>
+    </div>
+    <div>
+      <a class="btn btn-primary" href="built-to-survive.html">Built to Survive</a>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <hr />
-  <p>&copy; 2025 Unfunded Resistance. Built from scratch. No fluff. No filters.</p>
+  <p>© 2025 Unfunded Resistance · All rights reserved</p>
+  <p style="margin-top:8px;">
+    <a href="/terms-and-conditions.html">Terms</a> ·
+    <a href="/privacy.html">Privacy</a> ·
+    <a href="/refund.html">Refund</a>
+  </p>
 </footer>
 
 </body>
