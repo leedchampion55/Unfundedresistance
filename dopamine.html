@@ -53,159 +53,181 @@
   }
   </script>
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BJ5QD8T2VJ');
+  </script>
 
   <style>
-    .container {
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 0 20px;
-      color: #eee;
-      font-family: 'Courier New', monospace;
+    :root {
+      --bg: #050505;
+      --panel: #0e0e0e;
+      --panel-2: #121212;
+      --text: #e8e8e8;
+      --muted: #b9b9b9;
+      --accent: #ff3333;
+      --accent-soft: rgba(255, 51, 51, 0.12);
+      --blue: #6aa6ff;
+      --radius: 16px;
+      --maxw: 1000px;
     }
 
-    .container h1 {
-      color: #66f;
-      font-size: 3em;
-      margin-bottom: 30px;
-      text-align: center;
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
     }
 
-    .container h2 {
-      color: #f33;
-      font-size: 1.8em;
-      margin-top: 40px;
-      border-bottom: 2px solid #f33;
-      padding-bottom: 10px;
-    }
-
-    .container p {
-      font-size: 1.1em;
-      margin-bottom: 20px;
-      color: #ccc;
-    }
-
-    .container ul {
-      margin-bottom: 20px;
-      padding-left: 20px;
-    }
-
-    .container ul li {
-      margin-bottom: 10px;
-      color: #ccc;
-    }
-
-    .container blockquote {
-      background: #111;
-      border-left: 4px solid #66f;
-      margin: 30px 0;
+    /* NAV */
+    nav {
+      background-color: #000;
       padding: 15px 20px;
-      color: #999;
+      border-bottom: 1px solid var(--accent);
+      font-family: 'Courier New', monospace;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+    .menu-toggle { display: none; font-size: 2em; color: #fff; cursor: pointer; }
+    .nav-links {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      list-style: none; margin: 0; padding: 0; gap: 14px;
+    }
+    .nav-links a {
+      color: #fff; text-decoration: none; font-size: 1.05em;
+      padding: 8px 10px; border: 1px solid transparent; transition: all 0.25s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent); border-color: var(--accent); background-color: #111;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; flex-direction: column; background-color: #000;
+        position: absolute; top: 60px; left: 0; width: 100%;
+        text-align: center; border-top: 1px solid var(--accent);
+      }
+      .nav-links.active { display: flex; }
+      .nav-links a { border: none; padding: 14px; }
+    }
+
+    /* LAYOUT */
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 26px 18px 70px; }
+    section { margin-top: 22px; }
+
+    .hero {
+      background: radial-gradient(1100px circle at top left, var(--accent-soft), transparent 55%), var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+
+    .badge {
+      display: inline-flex; gap: 8px; align-items: center;
+      background: #0b0b0b; border: 1px solid #1d1d1d; border-radius: 999px;
+      padding: 6px 10px; font-size: 13px; color: var(--muted);
+    }
+    .badge .dot {
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--accent); box-shadow: 0 0 12px var(--accent);
+    }
+
+    h1 { font-size: clamp(28px, 4.5vw, 42px); line-height: 1.1; margin: 10px 0; }
+    h2 { margin: 0 0 8px; font-size: clamp(18px, 2.7vw, 22px); }
+    h3 { margin: 0 0 6px; font-size: 18px; }
+
+    .sub { font-size: clamp(15px, 2.4vw, 18px); color: var(--muted); }
+
+    .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .btn {
+      display:inline-block; padding: 11px 18px; border-radius: 999px;
+      text-decoration:none; font-weight:800; border:1px solid #333;
+    }
+    .btn-primary { background: var(--accent); color:#000; border-color: var(--accent); }
+    .btn-ghost { background: transparent; color: var(--text); }
+    .btn-blue { background: var(--blue); color:#000; border-color: var(--blue); }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .card p, .card li { color: var(--muted); font-size: 15px; }
+
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .module {
+      background: var(--panel);
+      border: 1px solid #1b1b1b;
+      border-radius: var(--radius);
+      padding: 16px;
+      position: relative;
+    }
+    .module .label {
+      position: absolute; top: 12px; right: 12px;
+      font-size: 12px; color: var(--muted);
+      border: 1px solid #222; background: #0a0a0a;
+      padding: 4px 8px; border-radius: 999px;
+    }
+
+    ul, ol { padding-left: 18px; margin: 8px 0 0; }
+    li { margin: 6px 0; }
+
+    .quote {
+      background: var(--panel-2);
+      border-left: 3px solid var(--blue);
+      padding: 12px 14px;
+      border-radius: 10px;
+      color: #c7c7c7;
       font-style: italic;
     }
 
-    .container strong {
-      color: #fff;
+    .divider {
+      border: none; height: 1px; background: #1e1e1e; margin: 22px 0;
+    }
+
+    .diagnostic li strong { color: var(--text); }
+
+    .drill {
+      display:flex; gap: 10px; align-items:flex-start;
+      background: #0b0b0b; border: 1px dashed #2b2b2b;
+      border-radius: 12px; padding: 12px 14px;
+      margin-top: 10px;
+    }
+    .drill .icon {
+      font-weight: 900; font-size: 16px; color: #000;
+      background: var(--accent); padding: 6px 8px; border-radius: 8px;
+      min-width: 34px; text-align:center;
     }
 
     footer {
-      text-align: center;
-      margin-top: 50px;
-      color: #666;
-      font-size: 0.9em;
+      background:#0b0b0b; color:#aaa; text-align:center; padding:20px; font-size: 14px;
     }
-
-    footer hr {
-      margin: 2em auto;
-      border-color: #444;
-    }
+    footer a { color:#4da3ff; text-decoration:none; }
   </style>
 </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BJ5QD8T2VJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-BJ5QD8T2VJ');
-</script>
- <style>
-  /* Base Styles */
-  nav {
-    background-color: #000;
-    padding: 15px 20px;
-    border-bottom: 1px solid #f33;
-    font-family: 'Courier New', monospace;
-    position: relative;
-  }
-
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu-toggle {
-    display: none;
-    font-size: 2em;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
-  }
-
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    color: #f33;
-    border-color: #f33;
-    background-color: #111;
-  }
-
-  /* Mobile Styles */
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
-    }
-
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background-color: #000;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      border-top: 1px solid #f33;
-      z-index: 99;
-    }
-
-    .nav-links.active {
-      display: flex;
-    }
-
-    .nav-links a {
-      border: none;
-      padding: 15px;
-    }
-  }
-</style>
+<body>
 
 <nav>
   <div class="nav-container">
@@ -228,151 +250,235 @@
 
 <script>
   function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('active');
   }
 </script>
-  <style>
-     .cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
-    .btn { display:inline-block; padding: 10px 16px; border-radius: 999px; text-decoration:none; font-weight:700; border:1px solid #333; }
-    .btn-primary { background:#f33; color:#000; border-color:#f33; }
-    .btn-ghost { background:transparent; color:#eee; }
 
-  </style>
-  <style>
-    .container img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  display: block;
-  margin: 0 auto 2em auto;
-}
-  </style>
+<div class="wrap">
 
-  <div class="container">
-    <h1>Dopamine</h1>
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="badge"><span class="dot"></span> Psychology course • Survival layer</div>
+      <h1>Dopamine & Trading</h1>
+      <p class="sub">
+        Most traders don’t lose because they’re stupid.  
+        They lose because their brain gets addicted to the loop.
+        This page explains the mechanism — and gives you drills to break it.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#modules">Start the course</a>
+        <a class="btn btn-ghost" href="#drills">Jump to drills</a>
+      </div>
+    </div>
 
-    <h2>1. What is Dopamine?</h2>
-    <p>
-      Dopamine is a neurotransmitter—a chemical messenger in the brain. It’s often labeled the “pleasure chemical,” but that’s an oversimplification. Dopamine’s real job is about <strong>motivation, anticipation, and learning</strong> rather than pure pleasure.
+    <div class="card">
+      <h3 style="margin-top:0;">The one-line truth</h3>
+      <p style="margin-bottom:0;">
+        You’re not trading a strategy when dopamine is driving you.  
+        You’re just feeding a habit and calling it “learning.”
+      </p>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="card">
+    <p style="margin-top:0;">
+      Dopamine isn’t “pleasure.” It’s **anticipation.**
+      It spikes before reward, not after it.
     </p>
     <p>
-      It spikes when you <strong>expect</strong> a reward, not just when you get one.
+      In trading, that means your brain gets high on:
+      setups forming, orders placed, candles moving, P/L changing —  
+      even *checking charts for no reason*.
     </p>
-    <p>
-      In trading, this is crucial. Your brain fires dopamine when you:
+    <p style="margin-bottom:0;">
+      If you’ve ever known exactly what to do and still broke your rules…  
+      this is why.
     </p>
-    <ul>
-      <li>See a trading setup forming</li>
-      <li>Imagine potential profits</li>
-      <li>Place a trade</li>
-      <li>Watch the market move in your favor</li>
-      <li>Even check your P&amp;L repeatedly</li>
+  </section>
+
+  <!-- MODULES -->
+  <section id="modules" class="grid-2">
+    <div class="module">
+      <div class="label">Module 1</div>
+      <h2>What dopamine actually does</h2>
+      <p>
+        Dopamine’s job is to teach you what to repeat.  
+        It rewards **behavior that might lead to reward**, even if that behavior destroys you later.
+      </p>
+      <ul>
+        <li>Setup appears → dopamine rises</li>
+        <li>You click buy/sell → dopamine spikes</li>
+        <li>Market ticks in your favor → dopamine floods</li>
+        <li>You feel alive → brain tags it as “important”</li>
+      </ul>
+      <p><em>Your brain doesn’t care about expectancy. It cares about now.</em></p>
+    </div>
+
+    <div class="module">
+      <div class="label">Module 2</div>
+      <h2>The dopamine loop</h2>
+      <div class="quote">Anticipation → Action → Outcome → Learning → Repeat</div>
+      <p>
+        Trading is a perfect addiction machine because it mixes:
+      </p>
+      <ul>
+        <li><strong>Uncertainty</strong> (maybe this one is a big win)</li>
+        <li><strong>Speed</strong> (instant feedback)</li>
+        <li><strong>Meaning</strong> (ego, identity, “I’m a trader”)</li>
+      </ul>
+      <p><em>Even losses keep you hooked, because unpredictability is stimulating.</em></p>
+    </div>
+
+    <div class="module">
+      <div class="label">Module 3</div>
+      <h2>Dopamine vs discipline</h2>
+      <p>
+        Your logical brain writes the plan.  
+        Dopamine-fueled brain executes the account.
+      </p>
+      <ul>
+        <li>You plan “2 trades max.”</li>
+        <li>You get a spike → take 5.</li>
+        <li>You lose → spike again → “just one more.”</li>
+      </ul>
+      <p>
+        When dopamine is leading, every trade feels urgent.  
+        Urgency is how accounts die.
+      </p>
+    </div>
+
+    <div class="module">
+      <div class="label">Module 4</div>
+      <h2>The random reward trap</h2>
+      <p>
+        Markets run on variable rewards — the most addictive schedule known to psychology.
+        Same as slot machines.
+      </p>
+      <ul>
+        <li>Good trades lose</li>
+        <li>Bad trades win</li>
+        <li>Brain learns: “keep pulling the lever”</li>
+      </ul>
+      <p><em>The market doesn’t train skill first. It trains craving first.</em></p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- DIAGNOSTIC -->
+  <section class="card">
+    <h2>Dopamine Loop Diagnostic</h2>
+    <p>If these sound like you, you’re not trading — you’re looping:</p>
+    <ul class="diagnostic">
+      <li><strong>You feel bored without a trade open.</strong></li>
+      <li><strong>You check charts like social media.</strong></li>
+      <li><strong>You click “just to be involved.”</strong></li>
+      <li><strong>You size up after wins because you feel invincible.</strong></li>
+      <li><strong>You size up after losses because you feel desperate.</strong></li>
+      <li><strong>You keep trading even after you said you were done.</strong></li>
     </ul>
+    <p style="margin-bottom:0;"><em>That’s not a strategy problem. That’s a brain problem.</em></p>
+  </section>
+
+  <!-- DRILLS -->
+  <section id="drills" class="card">
+    <h2>Battle Drills to Break the Loop</h2>
     <p>
-      Each of those moments can trigger a dopamine hit.
+      These drills don’t make trading fun.  
+      They make it survivable.
     </p>
 
-    <h2>2. The Dopamine Loop in Trading</h2>
-    <blockquote>
-      Anticipation → Action → Outcome → Learning → Repeat
-    </blockquote>
-    <p>
-      Trading can create a powerful <strong>dopamine feedback loop</strong>:
-    </p>
-    <p>
-      You see a setup → dopamine rises → you feel excited → you take a trade. A win = big dopamine surge → reinforces the behavior. Even losses can sometimes increase dopamine, because unpredictability <strong>heightens excitement</strong>.
-    </p>
-    <p>
-      This loop explains why traders:
-    </p>
-    <ul>
-      <li>Obsess over charts</li>
-      <li>Overtrade</li>
-      <li>Take impulsive trades outside their plan</li>
-      <li>Chase losses</li>
-      <li>Keep checking the markets even when they’re “done for the day”</li>
-    </ul>
+    <div class="drill">
+      <div class="icon">1</div>
+      <div>
+        <h3>Delay the trade</h3>
+        <p>
+          When you feel urgency, wait 60 seconds before clicking.  
+          If the setup is real, it survives the wait.  
+          If it wasn’t, dopamine dies and you stay disciplined.
+        </p>
+      </div>
+    </div>
 
-    <h2>3. Dopamine vs. Discipline</h2>
-    <p>
-      Dopamine is not your enemy—but it’s dangerous when it <strong>hijacks your decision-making.</strong>
-    </p>
-    <p>
-      Your logical brain knows:
-    </p>
-    <ul>
-      <li>“I should follow my trading plan.”</li>
-      <li>“I shouldn’t revenge trade.”</li>
-      <li>“I’m risking too much.”</li>
-    </ul>
-    <p>
-      But dopamine drives <strong>instant gratification</strong>. It urges you to:
-    </p>
-    <ul>
-      <li>Click the button one more time</li>
-      <li>Check your phone mid-meal for market updates</li>
-      <li>Add to a losing trade hoping to “get back to break-even”</li>
-    </ul>
-    <p>
-      If your trading is driven mainly by dopamine spikes, you’re no longer trading a strategy—you’re gambling for a neurochemical hit.
-    </p>
+    <div class="drill">
+      <div class="icon">2</div>
+      <div>
+        <h3>Reward rules, not wins</h3>
+        <p>
+          Your brain is trained to reward P/L.
+          Flip it.
+          Track a “rule score” daily and celebrate obedience, not outcomes.
+        </p>
+      </div>
+    </div>
 
-    <h2>4. The Random Reward Trap</h2>
-    <p>
-      Markets don’t always reward good behavior immediately:
-    </p>
-    <ul>
-      <li><strong>Good trades lose.</strong></li>
-      <li><strong>Bad trades sometimes win.</strong></li>
-    </ul>
-    <p>
-      This randomness supercharges dopamine addiction because it creates a <strong>variable reward schedule</strong>, the same mechanism used in slot machines.
-    </p>
-    <p>
-      Psychological research shows <strong>variable rewards</strong> are far more addictive than predictable ones. That’s why traders can become hooked on:
-    </p>
-    <ul>
-      <li>Constant chart-watching</li>
-      <li>Impulsive trades</li>
-      <li>Over-leveraging</li>
-    </ul>
-    <p>
-      …even if they’re losing money overall.
-    </p>
+    <div class="drill">
+      <div class="icon">3</div>
+      <div>
+        <h3>Screen boundaries</h3>
+        <p>
+          Dopamine needs constant stimulation.  
+          You take that away by trading ONLY in defined windows — then leaving.
+        </p>
+        <ul>
+          <li>Plan window</li>
+          <li>Execution window</li>
+          <li>Review window</li>
+        </ul>
+      </div>
+    </div>
 
-    <h2>5. How to Manage Dopamine in Trading</h2>
-    <p>
-      Here’s how you can keep dopamine in check:
-    </p>
-    <ul>
-      <li><strong>Systematic Trading:</strong> Rely on rules and checklists rather than gut feelings.</li>
-      <li><strong>Limit Screen Time:</strong> Step away between sessions to break obsessive loops.</li>
-      <li><strong>Predefine Rewards:</strong> Reward yourself for following your plan—not just for winning trades.</li>
-      <li><strong>Mindfulness Practice:</strong> Helps you observe urges without acting on them.</li>
-      <li><strong>Risk Management:</strong> Keeps losses small, reducing emotional extremes.</li>
-    </ul>
+    <div class="drill">
+      <div class="icon">4</div>
+      <div>
+        <h3>Pre-commit exits</h3>
+        <p>
+          Use hard SL/TP and remove decision-making.  
+          If you stay discretionary during emotion, you will sabotage.
+        </p>
+      </div>
+    </div>
 
-    <h2>A Final Truth</h2>
-    <p>
-      You can’t remove dopamine from trading — nor should you. It’s part of being human. It’s what makes trading exciting.
-    </p>
-    <p>
-      But if you <strong>don’t learn to manage it</strong>, dopamine will manage you—and that’s when trading becomes less a business… and more an addiction.
+    <div class="drill">
+      <div class="icon">5</div>
+      <div>
+        <h3>“One more trade” rule</h3>
+        <p>
+          The moment you think “just one more,” you stop for the day.  
+          That phrase is dopamine speaking, not edge.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRAP -->
+  <section class="card" style="text-align:center;">
+    <h2>Final truth</h2>
+    <p class="sub" style="max-width:760px; margin:0 auto;">
+      You can’t remove dopamine from trading.  
+      But you *can* stop letting it drive the car.
+      The traders who survive aren’t emotionless —  
+      they’re trained to obey even when emotion screams.
     </p>
 
-    <blockquote>
-      Dopamine makes trading thrilling—but also dangerous. The best traders understand how to ride the waves of anticipation without letting those waves drown their discipline.
-    </blockquote>
+    <div class="cta-row" style="justify-content:center; margin-top:14px;">
+      <a class="btn btn-primary" href="built-to-survive.html">Built to Survive</a>
+      <a class="btn btn-blue" href="prove-it.html">Prove It Standard</a>
+    </div>
+  </section>
 
-    <p>
-      Want to explore any of this deeper? E.g. how to spot dopamine-driven trades, or how to adjust your routine?
-    </p>
-  </div>
+</div><!-- /wrap -->
 
-  <footer>
-    <hr />
-    <p>&copy; 2025 Unfunded Resistance. Built from scratch. No fluff. No filters.</p>
-  </footer>
+<footer>
+  <p>© 2025 Unfunded Resistance · All rights reserved</p>
+  <p style="margin-top:8px;">
+    <a href="/terms-and-conditions.html">Terms</a> ·
+    <a href="/privacy.html">Privacy</a> ·
+    <a href="/refund.html">Refund</a>
+  </p>
+</footer>
+
 </body>
 </html>
